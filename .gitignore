@@ -1,0 +1,8 @@
+venv
+config.txt
+*.json
+.history
+.vscode
+*_pycache__
+*.pyc
+*.idea
