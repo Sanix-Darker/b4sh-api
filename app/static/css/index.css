@@ -1,0 +1,11 @@
+.app_editor_dragbar {
+    background-color: #222222;
+    width: 100%;
+    height: 2px;
+    cursor: row-resize;
+    opacity: 1;
+}
+
+#editor {
+    height: 250px;
+}

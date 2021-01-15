@@ -5,8 +5,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css" />
         
+        <link rel="stylesheet" href="../static/css/index.css">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -27,7 +31,7 @@
                 <div class="col-3">
                     <div class="form-group">                    
                         
-                        <select class="selectpicker w-100" title="Operating system" multiple data-live-search="true">
+                        <select class="selectpicker w-100" title="Filter by Operating system" multiple data-live-search="true">
                             <option>linux - Debian</option>
                             <option>linux - Centos</option>
                             <option>win - win10</option>
@@ -58,24 +62,34 @@
                     </ul>
                 </div>
                 <div class="col">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Custom Title...">
+                    <div class="row">
+                        <div class="col-3">
+                            <select class="selectpicker w-100" title="Operating system" multiple data-live-search="true">
+                                <option>linux - Debian</option>
+                                <option>linux - Centos</option>
+                                <option>win - win10</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Custom Title...">
+                            </div>
+                        </div>
                     </div>
-                    <hr>
 
                     <div id="accordion">
 
                         <div class="card">
-                            <div class="card-header">
-                            <a class="card-link" data-toggle="collapse" href="#collapseOne">
-                                Edit commands
-                            </a>
+                            <div class="card-header" role="button" data-toggle="collapse" href="#collapseOne">
+                                <a style="text-decoration: none; color: #1E1E1E;">
+                                    Edit commands
+                                </a>
                             </div>
                             <div id="collapseOne" class="collapse show" data-parent="#accordion">
                                 <div class="card-body">
 
                                     <div id="editor_wrapper" class="app_editor_wrapper">
-                                        <div id="editor" style="height: 300px;"># Your Commands here...</div>
+                                        <div id="editor"># Your Commands here...</div>
                                         <div id="editor_dragbar" class="app_editor_dragbar"></div>
                                     </div>
                                     <div class="pb-5 pt-3">
@@ -96,8 +110,8 @@
                         </div>
                         
                         <div class="card">
-                            <div class="card-header">
-                                <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+                            <div class="card-header" role="button" data-toggle="collapse" href="#collapseTwo">
+                                <a class="collapsed" style="text-decoration: none; color: #1E1E1E;">
                                     b4sh command
                                 </a>
                             </div>
@@ -106,12 +120,13 @@
                                     <div class="pb-3">
                                         <kbd style="display: block;">
                                             curl -s b4sh.co/b.sh | bash -s 00oaik3
+                                            <i
+                                                data-toggle="tooltip" 
+                                                data-placement="top" 
+                                                role="button"
+                                                title="Click to copy" 
+                                                class="mt-1 fas fa-copy float-right"></i>
                                         </kbd>
-                                    </div>
-                                    <div class="pb-4">
-                                        <button class="btn btn-success float-right">
-                                            COPY
-                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -125,87 +140,8 @@
                 </div>
             </div>
         </div>
+
+        <script src="../static/js/index.js"></script>
     </body>
-    <script type="text/javascript">
-        var editor = ace.edit("editor");
-        editor.setTheme("ace/theme/twilight");
-        editor.getSession().setMode("ace/mode/sh");
-        editor.setOptions({
-            fontSize: "17pt"
-        })
-        window.draggingAceEditor = {};
 
-        function makeAceEditorResizable(editor){
-            var id_editor = editor.container.id;
-            var id_dragbar = '#' + id_editor + '_dragbar';
-            var id_wrapper = '#' + id_editor + '_wrapper';
-            var wpoffset = 0;
-            window.draggingAceEditor[id_editor] = false;
-
-            $(id_dragbar).mousedown(function(e) {
-                e.preventDefault();
-
-                window.draggingAceEditor[id_editor] = true;
-            
-                var _editor = $('#' + id_editor);
-                var top_offset = _editor.offset().top - wpoffset;
-            
-                // Set editor opacity to 0 to make transparent so our wrapper div shows
-                _editor.css('opacity', 0);
-            
-                // handle mouse movement
-                $(document).mousemove(function(e){
-                    var actualY = e.pageY - wpoffset;
-                    // editor height
-                    var eheight = actualY - top_offset;
-                    
-                    // Set wrapper height
-                    $(id_wrapper).css('height', eheight);
-                    
-                    // Set dragbar opacity while dragging (set to 0 to not show)
-                    $(id_dragbar).css('opacity', 0.15);
-                });
-            });
-            
-            $(document).mouseup(function(e){
-                if (window.draggingAceEditor[id_editor])
-                {
-                    var ctx_editor = $('#' + id_editor);
-            
-                    var actualY = e.pageY - wpoffset;
-                    var top_offset = ctx_editor.offset().top - wpoffset;
-                    var eheight = actualY - top_offset;
-            
-                    $( document ).unbind('mousemove');
-                    
-                    // Set dragbar opacity back to 1
-                    $(id_dragbar).css('opacity', 1);
-                    
-                    // Set height on actual editor element, and opacity back to 1
-                    ctx_editor.css('height', eheight).css('opacity', 1);
-                    
-                    // Trigger ace editor resize()
-                    editor.resize();
-
-                    window.draggingAceEditor[id_editor] = false;
-                }
-            });
-        }
-
-        makeAceEditorResizable(editor);
-
-        $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-    </script>
-
-    <style>
-        .app_editor_dragbar {
-            background-color: #222222;
-            width: 100%;
-            height: 2px;
-            cursor: row-resize;
-            opacity: 1;
-        }
-    </style>
 </html>
