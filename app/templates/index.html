@@ -5,72 +5,120 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.01/ace.js"></script>
     </head>
     <body>
 
-        <nav class="navbar bg-dark navbar-dark pl-4">
+        <nav class="navbar bg-dark navbar-dark">
             <!-- Brand -->
-            <a class="navbar-brand" href="#">_b4sh<span style="font-size: 10px;">, The command line manager for humans.</span> </a>
+            <div class="container">
+                <a class="navbar-brand" href="#">_b4sh<span style="font-size: 10px;">, The command line manager for humans.</span> </a>
+            </div>
         </nav>
- 
-        <div class="row m-2">
-            <div class="col-3">
-                <div class="form-group">                    
-                    
-                    <select class="selectpicker w-100" title="Operating system" multiple data-live-search="true">
-                        <option>linux - Debian</option>
-                        <option>linux - Centos</option>
-                        <option>win - win10</option>
-                    </select>
+        
+        <div class="container mt-3">
+            <div class="row" >
+                <div class="col-3">
+                    <div class="form-group">                    
+                        
+                        <select class="selectpicker w-100" title="Operating system" multiple data-live-search="true">
+                            <option>linux - Debian</option>
+                            <option>linux - Centos</option>
+                            <option>win - win10</option>
+                        </select>
+                        <hr>
+                        <input type="text" class="form-control" placeholder="Search a b4sh here...">
+                    </div>
                     <hr>
-                    <input type="text" class="form-control" placeholder="Search a b4sh here...">
+                
+                    <ul class="list-group " style="max-height: 27rem;overflow: auto;">
+                        <label class="form-check-label">
+                            <li role='button' class="list-group-item d-flex justify-content-between align-items-center" style="padding-left: 30px;">
+                                <input class="form-check-input" type="checkbox">
+                                <span data-toggle="tooltip" data-placement="top" title="Debian-Cerbot" class="mt-1">Debian-Cerbot...</span>
+                                <span class="badge badge-secondary badge-pill">12</span>
+                            </li>
+                        </label>
+
+                        <label  class="form-check-label">
+                            <li role='button' class="list-group-item d-flex justify-content-between align-items-center" style="padding-left: 30px;">
+                                <input class="form-check-input" type="checkbox">
+                                <span data-toggle="tooltip" data-placement="top" title="Ubuntu-Nginx" class="mt-1">Ubuntu-Nginx...</span>
+                                <span class="badge badge-secondary badge-pill">5</span>
+                            </li>
+                        </label>
+
+                    </ul>
                 </div>
-                <hr>
-            
-                <ul class="list-group " style="max-height: 27rem;overflow: auto;">
-                    <label class="form-check-label">
-                        <li role='button' class="list-group-item d-flex justify-content-between align-items-center" style="padding-left: 30px;">
-                            <input class="form-check-input" type="checkbox">
-                            <span class="mt-1">Debian-Cerbot</span>
-                            <span class="badge badge-secondary badge-pill">12</span>
-                        </li>
-                    </label>
+                <div class="col">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Custom Title...">
+                    </div>
+                    <hr>
 
-                    <label class="form-check-label">
-                        <li role='button' class="list-group-item d-flex justify-content-between align-items-center" style="padding-left: 30px;">
-                            <input class="form-check-input" type="checkbox">
-                            <span class="mt-1">Ubuntu-Nginx</span>
-                            <span class="badge badge-secondary badge-pill">5</span>
-                        </li>
-                    </label>
+                    <div id="accordion">
 
-                </ul>
-            </div>
-            <div class="col">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Custom Title...">
+                        <div class="card">
+                            <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#collapseOne">
+                                Edit commands
+                            </a>
+                            </div>
+                            <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                                <div class="card-body">
+
+                                    <div id="editor_wrapper" class="app_editor_wrapper">
+                                        <div id="editor" style="height: 300px;"># Your Commands here...</div>
+                                        <div id="editor_dragbar" class="app_editor_dragbar"></div>
+                                    </div>
+                                    <div class="pb-5 pt-3">
+                                        <button class="btn btn-primary float-right">
+                                            SAVE
+                                        </button>
+                                        <button class="btn btn-secondary float-right mr-2">
+                                            CLEAN
+                                        </button>
+
+                                        <!-- <button class="btn btn-primary" disabled>
+                                            <span class="spinner-border spinner-border-sm"></span>
+                                            Loading...
+                                        </button> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+                                    b4sh command
+                                </a>
+                            </div>
+                            <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                                <div class="card-body">
+                                    <div class="pb-3">
+                                        <kbd style="display: block;">
+                                            curl -s b4sh.co/b.sh | bash -s 00oaik3
+                                        </kbd>
+                                    </div>
+                                    <div class="pb-4">
+                                        <button class="btn btn-success float-right">
+                                            COPY
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-                <hr>
-
-                <div id="editor_wrapper" class="app_editor_wrapper">
-                    <div id="editor" style="height: 300px;"># Your Commands here...
-</div>
-                    <div id="editor_dragbar" class="app_editor_dragbar"></div>
-                  </div>
-                <hr>
-                <kbd style="display: block;">
-                    # or just Copy / Paste this line to your terminal<br>
-                    pip3 install b4sh && b -g ks334pol
-                </kbd>
-            </div>
+            </div>      
         </div>
     </body>
     <script type="text/javascript">
@@ -140,6 +188,10 @@
         }
 
         makeAceEditorResizable(editor);
+
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
     </script>
 
     <style>
