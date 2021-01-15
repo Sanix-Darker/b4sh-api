@@ -72,11 +72,11 @@ def find_b4sh(string: str, password, size_num=10, limit_num=10) -> dict:
         result = list(map(remove_for_find, list(Bash().collection.find({
             "title": {'$regex': string},
             "password": password
-        }, {"key": 1}).size(size_num).limit(limit_num))))
+        }, {"key": 1}))))
     else:
         result = list(map(remove_for_find, list(Bash().collection.find({
             "title": {'$regex': string}
-        }, {"key": 1}).size(size_num).limit(limit_num))))
+        }, {"key": 1}))))
 
     return {
         "code": "200",
@@ -102,7 +102,7 @@ def get_all_publics_bash(size_num=20, limit_num=10) -> dict:
     # the objecId none serializable object
     result = list(map(remove_id, list(Bash().find_by({
         "password": None
-    }).size(size_num).limit(limit_num))))
+    }))))
 
     return {
         "code": "200",
@@ -119,7 +119,7 @@ def get_all_private_bash(password: str, size_num=20, limit_num=10) -> dict:
     # the objecId none serializable object
     result = list(map(remove_id, list(Bash().find_by({
         "password": password
-    }).size(size_num).limit(limit_num))))
+    }))))
 
     return {
         "code": "200",

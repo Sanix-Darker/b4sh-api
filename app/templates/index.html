@@ -5,11 +5,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css" />
-        
-        <link rel="stylesheet" href="../static/css/index.css">
-
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css"/>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.01/ace.js"></script>
+
+        <link rel="stylesheet" href="../static/css/index.css">
     </head>
     <body>
 
@@ -24,18 +25,18 @@
             <div class="row" >
                 <div class="col-3">
                     <div class="form-group">                    
-                        
-                        <select class="selectpicker w-100" title="Filter by Operating system" multiple data-live-search="true">
-                            <option>linux - Debian</option>
-                            <option>linux - Centos</option>
-                            <option>win - win10</option>
+                        <select class="form-control w-100">
+                            <option value="" disabled selected>Filter by</option>
+                            <option>Up vote</option>
+                            <option>Down vote</option>
+                            <option>Used/Download</option>
                         </select>
                         <hr>
-                        <input type="text" class="form-control" placeholder="Search a b4sh here...">
+                        <input type="text" class="form-control" placeholder="Search a b4sh by title here...">
                     </div>
                     <hr>
                 
-                    <ul class="list-group " style="max-height: 27rem;overflow: auto;">
+                    <ul class="list-group " style="max-height: 20rem;overflow: auto;">
 
                         <label class="form-check-label">
                             <li role='button' class="list-group-item d-flex justify-content-between align-items-center" style="padding-left: 30px;">
@@ -56,76 +57,148 @@
                     </ul>
                 </div>
                 <div class="col">
-                    <div class="row">
-                        <div class="col-3">
-                            <select class="selectpicker w-100" title="Operating system" multiple data-live-search="true">
-                                <option>linux - Debian</option>
-                                <option>linux - Centos</option>
-                                <option>win - win10</option>
-                            </select>
-                        </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Custom Title...">
-                            </div>
-                        </div>
-                    </div>
 
-                    <div id="accordion">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#home">Overview</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#menu1">My list</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#menu2">How to use</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#menu3">About</a>
+                        </li>
+                    </ul>
+        
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane container active p-0 pt-2" id="home">
+                            <div id="accordion">
 
-                        <div class="card">
-                            <div class="card-header" role="button" data-toggle="collapse" href="#collapseOne">
-                                <a style="text-decoration: none; color: #1E1E1E;">
-                                    Edit commands
-                                </a>
-                            </div>
-                            <div id="collapseOne" class="collapse show" data-parent="#accordion">
-                                <div class="card-body">
-
-                                    <div id="editor_wrapper" class="app_editor_wrapper">
-                                        <div id="editor"># Your Commands here...</div>
-                                        <div id="editor_dragbar" class="app_editor_dragbar"></div>
+                                <div class="card">
+                                    <div class="card-header" role="button" data-toggle="collapse" href="#collapseOne">
+                                        <a id="edit" style="text-decoration: none; color: #1E1E1E;">
+                                            Edit commands
+                                        </a>
                                     </div>
-                                    <div class="pb-5 pt-3">
-                                        <button class="btn btn-primary float-right">
-                                            SAVE
-                                        </button>
-                                        <button class="btn btn-secondary float-right mr-2">
-                                            CLEAN
-                                        </button>
+                                    <div id="collapseOne" class="collapse" data-parent="#accordion">
+                                        <div class="card-body">
 
-                                        <!-- <button class="btn btn-primary" disabled>
-                                            <span class="spinner-border spinner-border-sm"></span>
-                                            Loading...
-                                        </button> -->
+                                            <div id="editor_wrapper" class="app_editor_wrapper">
+                                                <div class="row">
+                                                    <div class="col-2 border p-0">
+                                                        <span class="badge badge-default border">HelloWorld <b role="button">&times;</b> </span>
+                                                        <span class="badge badge-default border">Cerbot <b role="button">&times;</b> </span>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div id="editor"># ===---===---===---===---
+# Title : helloworld
+# Description : Just an example of using b4sh
+# Operating system(s) : ubuntu, debian
+
+echo "Hello World from b4sh !"
+
+echo "Click on GENERATE button !"
+echo "Copy and Paste the command line generated in your terminal !"
+echo "Resize this editor to add more..."
+
+echo "Have FUN !"
+
+# ===---===---===---===---</div>
+                                                        <div id="editor_dragbar" class="app_editor_dragbar"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="pb-5 pt-3">
+                                                <button class="btn btn-primary float-right">
+                                                    CAPTCHA + GENERATE
+                                                </button>
+                                                <!-- <button class="btn btn-primary" disabled>
+                                                    <span class="spinner-border spinner-border-sm"></span>
+                                                    Loading...
+                                                </button> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-header" role="button" data-toggle="collapse" href="#collapseTwo">
+                                        <a class="collapsed" style="text-decoration: none; color: #1E1E1E;">
+                                            b4sh command
+                                        </a>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                                        <div class="card-body">
+                                            <div class="pb-3">
+                                                <kbd style="display: block;">
+                                                    curl -s b4sh.co/b.sh | sh -s 00oaik3
+                                                    <i
+                                                        data-toggle="tooltip" 
+                                                        data-placement="top" 
+                                                        role="button"
+                                                        title="Click to copy" 
+                                                        class="mt-1 fas fa-copy float-right"></i>
+                                                </kbd>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
-                        
-                        <div class="card">
-                            <div class="card-header" role="button" data-toggle="collapse" href="#collapseTwo">
-                                <a class="collapsed" style="text-decoration: none; color: #1E1E1E;">
-                                    b4sh command
-                                </a>
-                            </div>
-                            <div id="collapseTwo" class="collapse" data-parent="#accordion">
-                                <div class="card-body">
-                                    <div class="pb-3">
-                                        <kbd style="display: block;">
-                                            curl -s b4sh.co/b.sh | bash -s 00oaik3
-                                            <i
-                                                data-toggle="tooltip" 
-                                                data-placement="top" 
-                                                role="button"
-                                                title="Click to copy" 
-                                                class="mt-1 fas fa-copy float-right"></i>
-                                        </kbd>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="tab-pane container fade p-0 pt-2" id="menu1">
+                            <table id="mylist" class="table table-striped table-bordered" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                        <th>OS</th>
+                                        <th>Command</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>Edinburgh</td>
+                                        <td>61</td>
+                                        <td>2011/04/25</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Garrett Winters</td>
+                                        <td>Accountant</td>
+                                        <td>Tokyo</td>
+                                        <td>63</td>
+                                        <td>2011/07/25</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ashton Cox</td>
+                                        <td>Junior Technical Author</td>
+                                        <td>San Francisco</td>
+                                        <td>66</td>
+                                        <td>2009/01/12</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane container fade p-0 pt-1" id="menu2">
+                            <iframe height="350" style="width: 100%;"
+                                src="https://www.youtube.com/watch?v=qehLslERiks">
+                            </iframe>
+                        </div>
+                        <div class="tab-pane container fade p-0 pt-1" id="menu3">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde ex ipsum eaque voluptatibus eos corrupti 
+                            debitis tempore sunt nesciunt. Sit quasi dicta ipsa quo facilis vitae quidem eveniet fugit architecto.
+                            <hr>
+                            <h5>Buy me a coffee</h5>
                         </div>
                     </div>
+
                 </div>
             </div>
             <div class="row">
@@ -136,10 +209,12 @@
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.01/ace.js"></script>
         <script src="../static/js/index.js"></script>
     </body>
 

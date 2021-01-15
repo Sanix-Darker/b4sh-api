@@ -1,10 +1,3 @@
-var editor = ace.edit("editor");
-editor.setTheme("ace/theme/twilight");
-editor.getSession().setMode("ace/mode/sh");
-editor.setOptions({
-    fontSize: "17pt"
-})
-window.draggingAceEditor = {};
 
 function makeAceEditorResizable(editor){
     var id_editor = editor.container.id;
@@ -63,8 +56,23 @@ function makeAceEditorResizable(editor){
     });
 }
 
-makeAceEditorResizable(editor);
 
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
+
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/twilight");
+    editor.getSession().setMode("ace/mode/sh");
+    editor.setOptions({
+        fontSize: "10pt"
+    })
+    window.draggingAceEditor = {};
+
+    makeAceEditorResizable(editor);
+
+
+    // collapse accordion 1
+    $("#edit").trigger("click");
+
+    $('#mylist').DataTable();
 });
