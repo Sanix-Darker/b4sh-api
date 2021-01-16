@@ -1,6 +1,6 @@
 # coding: utf-8
 # b4sh REST-API
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, jsonify, request, render_template, send_file
 from flask_cors import CORS, cross_origin
 
 from app.utils import *
@@ -15,6 +15,11 @@ CORS(app, support_credentials=True)
 def _index():
     return render_template("index.html")
 
+# /b.sh
+@app.route("/b.sh")
+@cross_origin(supports_credentials=True)
+def _get_b_shell():
+    return send_file("./static/b.sh", attachment_filename='b.sh')
 
 # /api/
 @app.route('/api', methods=['GET'])
