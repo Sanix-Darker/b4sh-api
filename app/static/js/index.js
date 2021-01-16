@@ -80,6 +80,10 @@ function copyToClipboard(text, el) {
     }
 }
 
+function generate(){
+    
+}
+
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
 

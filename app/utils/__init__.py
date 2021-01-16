@@ -13,6 +13,7 @@ from app.utils.helpers import (
     gen_hash,
     check_password,
     generate_key,
+    generate_captcha
 )
 
 from app.utils.save_bash import save_bash

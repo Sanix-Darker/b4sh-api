@@ -13,5 +13,5 @@ flask_cors
 #crossplatform path
 pathlib
 
-# Captcha generation
-claptcha
+# For captcha
+# pillow
