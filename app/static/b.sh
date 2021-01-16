@@ -1,13 +1,26 @@
 #!/bin/bash
 
 VERSION=0.0.1
-HOST="b4sh.co"
+HOST="http://127.0.0.1:4352"
 
 
 exit_b4sh()
 {
     echo "[-] Thanks for using b4sh."
     exit 1
+}
+
+# Ask to see the content before execute it
+see_content()
+{
+    echo "[-] Do you want to see the content ?"
+    echo -n "[-] Choice (y/n): "
+    read choiX
+
+    if [ $choiX == "y" ] || [ $choiX == "yes" ] || [ $choiX == "Y" ] || [ $choiX == "YES" ]
+    then
+        $"${1}"
+    fi
 }
 
 
@@ -94,23 +107,9 @@ get_param()
     result=$(curl -L -s "${HOST}/api/b/r/${1}")
 
     content=$(echo $result | jq -r '.result.content')
-    description=$(echo $result | jq -r '.result.title')
+    title=$(echo $result | jq -r '.result.title')
+    description=$(echo $result | jq -r '.result.description')
     key=$(echo $result | jq -r '.result.key')
-}
-
-
-# we get the status-code of the request
-# and check if it's 200
-proceed()
-{
-    if [[ $(echo $1 | jq -r '.code') -eq 200 ]] 
-    then
-        execute
-    else
-        # We print the reason why the request failed
-        reason=$(echo $1 | jq -r '.reason')
-        echo "[x] ${reason}."
-    fi
 }
 
 
@@ -123,13 +122,20 @@ main()
     check_local_execute $1
 
     # We get online params
-    get_param
+    get_param $1
 
     # check jq
     check_jq $content $key
 
     # Proceed depending on status-code
-    proceed $result
+    if [[ $(echo $result | jq -r '.code') -eq 200 ]] 
+    then
+        execute
+    else
+        # We print the reason why the request failed
+        reason=$(echo $result | jq -r '.reason')
+        echo "[x] ${reason}."
+    fi
 
     exit_b4sh
 }
