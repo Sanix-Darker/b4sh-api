@@ -1,6 +1,8 @@
 #!/bin/bash
 
 VERSION=0.0.1
+HOST="b4sh.co"
+
 
 exit_b4sh()
 {
@@ -8,6 +10,9 @@ exit_b4sh()
     exit 1
 }
 
+
+# We check if jq is installed
+# if not we return an error but give the shell script
 check_jq()
 {
     if ! [ -x "$(command -v jq)" ]; then
@@ -23,6 +28,8 @@ check_jq()
 }
 
 
+# This method just ask
+# if yes or no it should save shell script
 save()
 {
     echo "[?] Save this script locally ?"
@@ -49,7 +56,6 @@ execute()
 {
     # We run the command
     run $"$content"
-
     # We try to save it
     save
     # Then we exit
@@ -57,6 +63,8 @@ execute()
 }
 
 
+# We check if the script exist locally
+# and propose to execute it
 check_local_execute()
 {
     if [[ -f "${1}.sh" ]]
@@ -79,36 +87,50 @@ check_local_execute()
 }
 
 
-main()
+# THis method will check online
+# And get parameters such as title, description...
+get_param()
 {
-    echo "[+] b4sh v_${VERSION} started..."
-    echo "[-] Processing $1..."
-    # We check if the script exist locally
-    # and propose to execute it
-    check_local_execute $1
-
-    # result=$(curl -L -s "b4sh.co/api/b/r/${1}")
-    result=$(curl -L -s "http://127.0.0.1:4352/api/b/r/${1}")
+    result=$(curl -L -s "${HOST}/api/b/r/${1}")
 
     content=$(echo $result | jq -r '.result.content')
-    title=$(echo $result | jq -r '.result.title')
     description=$(echo $result | jq -r '.result.title')
     key=$(echo $result | jq -r '.result.key')
+}
 
-    # We check if jq is installed
-    # if not we return an error but give the shell script
-    check_jq $content $key
 
-    # we get the status-code of the request
-    # and check if it's 200
-    if [[ $(echo $result | jq -r '.code') -eq 200 ]] 
+# we get the status-code of the request
+# and check if it's 200
+proceed()
+{
+    if [[ $(echo $1 | jq -r '.code') -eq 200 ]] 
     then
         execute
     else
         # We print the reason why the request failed
-        reason=$(echo $result | jq -r '.reason')
+        reason=$(echo $1 | jq -r '.reason')
         echo "[x] ${reason}."
     fi
+}
+
+
+main()
+{
+    echo "[+] b4sh v_${VERSION} started..."
+    echo "[-] Processing $1..."
+
+    # We check locally the sh
+    check_local_execute $1
+
+    # We get online params
+    get_param
+
+    # check jq
+    check_jq $content $key
+
+    # Proceed depending on status-code
+    proceed $result
+
     exit_b4sh
 }
 
