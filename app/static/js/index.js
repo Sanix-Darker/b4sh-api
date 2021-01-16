@@ -103,4 +103,13 @@ $(document).ready(function(){
         var el = $(this);
         copyToClipboard(text, el);
     });
+
+    // A security check for too much characters 
+    // of bash code
+    editor.getSession().on('change', function() {
+        if(editor.session.getValue().length > 15000){
+            alert("[x] Too much characters, more than 15000 is not allowed...")
+        }
+    }, 100)
+
 });
