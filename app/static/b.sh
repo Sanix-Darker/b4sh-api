@@ -13,6 +13,11 @@ check_jq()
     if ! [ -x "$(command -v jq)" ]; then
         echo '[x] Error: jq is not installed in your system !' >&2
         echo "[x] Please install it manually > https://stedolan.github.io/jq/download/"
+        
+        echo $"$1" > "${2}.sh"
+        echo "[+] ${2}.sh saved locally !"
+        echo "[-] However the script ${2}.sh have been saved localy !"
+
         exit_b4sh
     fi
 }
@@ -42,10 +47,6 @@ run()
 
 execute()
 {
-    content=$(echo $result | jq -r '.result.content')
-    title=$(echo $result | jq -r '.result.title')
-    key=$(echo $result | jq -r '.result.key')
-
     # We run the command
     run $"$content"
 
@@ -82,19 +83,25 @@ main()
 {
     echo "[+] b4sh v_${VERSION} started..."
     echo "[-] Processing $1..."
-
+    # We check if the script exist locally
+    # and propose to execute it
     check_local_execute $1
 
     # result=$(curl -L -s "b4sh.co/api/b/r/${1}")
     result=$(curl -L -s "http://127.0.0.1:4352/api/b/r/${1}")
 
+    content=$(echo $result | jq -r '.result.content')
+    title=$(echo $result | jq -r '.result.title')
+    description=$(echo $result | jq -r '.result.title')
+    key=$(echo $result | jq -r '.result.key')
+
     # We check if jq is installed
-    check_jq
+    # if not we return an error but give the shell script
+    check_jq $content $key
 
     # we get the status-code of the request
-    code=$(echo $result | jq -r '.code')
-
-    if [[ $code -eq 200 ]] 
+    # and check if it's 200
+    if [[ $(echo $result | jq -r '.code') -eq 200 ]] 
     then
         execute
     else
