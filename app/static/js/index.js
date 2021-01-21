@@ -1,3 +1,4 @@
+var content = "";
 
 function makeAceEditorResizable(editor){
     var id_editor = editor.container.id;
@@ -81,7 +82,20 @@ function copyToClipboard(text, el) {
 }
 
 function generate(){
-    
+    $("#gen").prop('disabled', true);
+    $("#gen").html('<span class="spinner-border spinner-border-sm"></span> LOADING...');
+
+    setTimeout(() => {
+        $("#gen").prop('disabled', false);
+        $("#gen").html('GENERATED');
+
+        setTimeout(() => {
+            $("#gen").slideUp("slow", function() {
+                $("#showc").trigger("click");
+            });
+        }, 1000);
+        
+    }, 3000);
 }
 
 $(document).ready(function(){
@@ -113,7 +127,13 @@ $(document).ready(function(){
     editor.getSession().on('change', function() {
         if(editor.session.getValue().length > 15000){
             alert("[x] Too much characters, more than 15000 is not allowed...")
+        }else{
+            if (content != editor.session.getValue()){
+                $("#gen").slideDown("slow", function() {});
+            }else{
+                $("#gen").slideUp("slow", function() {});
+            }
+            content = editor.session.getValue();
         }
-    }, 100)
-
+    });
 });
