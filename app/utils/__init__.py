@@ -12,8 +12,7 @@ from app.utils.helpers import (
     get_trace,
     gen_hash,
     check_password,
-    generate_key,
-    generate_captcha
+    generate_key
 )
 
 from app.utils.save_bash import save_bash
