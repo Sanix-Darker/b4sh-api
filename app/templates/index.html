@@ -14,57 +14,16 @@
     </head>
     <body>
 
-        <nav class="navbar bg-dark navbar-dark">
-            <!-- Brand -->
-            <div class="container">
-                <a class="navbar-brand" href="#">_b4sh<span style="font-size: 10px;">, The command line manager for humans.</span> </a>
-            </div>
-        </nav>
-        
+        <!-- Web component For my Header -->
+        <w-header></w-header>
+
         <div class="container mt-3">
             <div class="row" >
+
                 <div class="col-3">
-                    <div class="form-group">                    
-                        <select class="form-control w-100">
-                            <option value="" disabled selected>Filter by</option>
-                            <option>Used/Download</option>
-                        </select>
-                        <hr>
-                        <input type="text" class="form-control" placeholder="Search a b4sh by title here...">
-                    </div>
-                    <hr>
-                
-                    <ul class="list-group " style="max-height: 22.5rem;overflow: auto;">
-
-                        <label class="form-check-label">
-                            <li role='button' class="list-group-item d-flex justify-content-between align-items-center" style="padding-left: 30px;">
-                                <input class="form-check-input" type="checkbox">
-                                <span data-toggle="tooltip" 
-                                    data-placement="top" 
-                                    title="Debian-Cerbot | hash : sanksajcnkjci327dh987sahciudsahciu239hf87ewh8dsiuc | version : 0.1.2 | OS : Debian" 
-                                    class="mt-1">Debian-Cerbot...</span>
-                                <span class="badge badge-secondary badge-pill">12</span>
-                            </li>
-                        </label>
-
-                        <label  class="form-check-label">
-                            <li role='button' class="list-group-item d-flex justify-content-between align-items-center" style="padding-left: 30px;">
-                                <input class="form-check-input" type="checkbox">
-                                <span data-toggle="tooltip" data-placement="top" title="Ubuntu-Nginx" class="mt-1">Ubuntu-Nginx...</span>
-                                <span class="badge badge-secondary badge-pill">5</span>
-                            </li>
-                        </label>
-
-                    </ul>
-                    <hr>
-                    <div class="row">
-                        <div class="col" style="font-size: 10px;">
-                            <span class="float-right" >
-                                By <a href="https://github.com/sanix-darker" target="_blank">@darker</a>.
-                            </span>
-                        </div>
-                    </div>
+                    <w-left></w-left>
                 </div>
+
                 <div class="col">
 
                     <ul class="nav nav-tabs">
@@ -99,26 +58,12 @@
                                             <div id="editor_wrapper" class="app_editor_wrapper">
                                                 <div class="row">
                                                     <div class="col-2 border p-0" style="overflow: auto;">
-                                                        <span class="badge badge-default border">HelloWorld <b role="button">&times;</b> </span>
-                                                        <span class="badge badge-default border">Cerbot <b role="button">&times;</b> </span>
+                                                        <!-- A web component for listing tags -->
+                                                        <w-tags tags="HelloWorld, Cerbot"></w-tags>
                                                     </div>
                                                     <div class="col">
-                                                        <div id="editor"># ===---===---===---===---
-# Title* : helloworld
-# Version* : 0.0.1
-# Description* : Just an example of using b4sh
-# Operating system(s) : debian
-
-echo "Hello World from b4sh !"
-
-echo "Click on GENERATE button !"
-echo "Copy and Paste the command line generated in your terminal !"
-echo "Resize this editor to add more..."
-
-echo "Have FUN !"
-
-# ===---===---===---===---</div>
-                                                        <div id="editor_dragbar" class="app_editor_dragbar"></div>
+                                                        <!-- THe editor component should have a content attribute (&#13; is for a new line)-->
+                                                        <w-editor content=""></w-editor>
                                                     </div>
                                                 </div>
                                             </div>
@@ -148,7 +93,7 @@ echo "Have FUN !"
                                                 <small>Copy the generated command and paste it in your terminal !</small>
 
                                                 <kbd style="display: block;">
-                                                    <span id="co-input">curl -L -s b4sh.co/b.sh | bash -s 0018843juh</span>
+                                                    <span id="co-input">curl -L -s <i></i>/b.sh | bash -s 0018843juh</span>
                                                     <input type="text" style="display: none;" id="co-hidden"/>
                                                     <i
                                                         id="co"
@@ -163,7 +108,6 @@ echo "Have FUN !"
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="tab-pane container fade p-0 pt-2" id="menu1">
                             <table id="mylist" class="table table-striped table-bordered" style="width:100%">
@@ -214,24 +158,6 @@ echo "Have FUN !"
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>Ashton Cox</td>
-                                        <td>Junior Technical Author</td>
-                                        <td>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <i role="button" 
-                                                        class="fas fa-copy"
-                                                        data-toggle="tooltip" 
-                                                        data-placement="top"
-                                                        title="curl -s b4sh.co/b.sh | sh -s 00oaik3" ></i> 
-                                                </div>
-                                                <div class="col">
-                                                    <i role="button" class="fas fa-eye"></i>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -260,6 +186,20 @@ echo "Have FUN !"
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+        <!-- Js Component-->
+        <script src="../static/js/components/Header.js"></script>
+        <script src="../static/js/components/Element.js"></script>
+        <script src="../static/js/components/ListElements.js"></script>
+        <script src="../static/js/components/Left.js"></script>
+        <script src="../static/js/components/ListTags.js"></script>
+        <script src="../static/js/components/Editor.js"></script>
+
+        <!-- Comon js stuff --> 
+        <script src="../static/js/vars.js"></script>
+        <script src="../static/js/ace-editor-utils.js"></script>
+        <script src="../static/js/utils.js"></script>
         <script src="../static/js/index.js"></script>
     </body>
 
