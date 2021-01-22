@@ -1,7 +1,7 @@
 /**
  * The Web component responsible for the left part of the
  * application with filters
- * 
+ *
  * author : s@n1x-d4rk3r
  */
 class Left extends HTMLElement {
@@ -19,10 +19,12 @@ class Left extends HTMLElement {
         });
 
         this.innerHTML = `
-            <div class="form-group">                    
+            <div class="form-group">
                 <select class="form-control w-100">
                     <option value="" disabled selected>Filter by</option>
-                    <option>Used/Download</option>
+                    <option value="most_used">Most Used</option>
+                    <option value="low_used">Low Used</option>
+                    <option value="mylist">My List</option>
                 </select>
                 <hr>
                 <input type="text" class="form-control" placeholder="Search a b4sh by title here...">
