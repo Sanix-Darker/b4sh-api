@@ -116,7 +116,14 @@ get_param()
 main()
 {
     echo "[+] b4sh v_${VERSION} started..."
-    echo "[-] Processing $1..."
+    if [$1 == ""]
+    then
+        echo "[x] You need to provide a b4sh-id to proceed..."
+        echo "[-] Ex : bash b.sh hello_world1234"
+        exit_b4sh
+    fi
+
+    echo "[-] Processing $HOST/$1..."
 
     # We check locally the sh
     check_local_execute $1

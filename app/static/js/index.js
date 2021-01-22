@@ -62,22 +62,22 @@ function copyToClipboard(text, el) {
     var elOriginalText = el.attr('data-original-title');
 
     if (copyTest === true) {
-    var copyTextArea = document.createElement("textarea");
-    copyTextArea.value = text;
-    document.body.appendChild(copyTextArea);
-    copyTextArea.select();
-    try {
-        var successful = document.execCommand('copy');
-        var msg = successful ? 'Copied!' : 'Whoops, not copied!';
-        el.attr('data-original-title', msg).tooltip('show');
-    } catch (err) {
-        console.log('Oops, unable to copy');
-    }
-    document.body.removeChild(copyTextArea);
-    el.attr('data-original-title', elOriginalText);
+        var copyTextArea = document.createElement("textarea");
+        copyTextArea.value = text;
+        document.body.appendChild(copyTextArea);
+        copyTextArea.select();
+        try {
+            var successful = document.execCommand('copy');
+            var msg = successful ? 'Copied!' : 'Whoops, not copied!';
+            el.attr('data-original-title', msg).tooltip('show');
+        } catch (err) {
+            console.log('Oops, unable to copy');
+        }
+        document.body.removeChild(copyTextArea);
+        el.attr('data-original-title', elOriginalText);
     } else {
-    // Fallback if browser doesn't support .execCommand('copy')
-    window.prompt("Copy to clipboard: Ctrl+C or Command+C, Enter", text);
+        // Fallback if browser doesn't support .execCommand('copy')
+        window.prompt("Copy to clipboard: Ctrl+C or Command+C, Enter", text);
     }
 }
 
@@ -93,9 +93,9 @@ function generate(){
             $("#gen").slideUp("slow", function() {
                 $("#showc").trigger("click");
             });
-        }, 1000);
+        }, 500);
         
-    }, 3000);
+    }, 2000);
 }
 
 $(document).ready(function(){
