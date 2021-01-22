@@ -17,7 +17,7 @@ $(document).ready(function(){
 
     console.log(JSON.stringify(editor.getSession().doc.getNewLineCharacter()))
 
-    // A security check for too much characters 
+    // A security check for too much characters
     // of bash code
     editor.getSession().on('change', function() {
         if(editor.session.getValue().length > 15000){

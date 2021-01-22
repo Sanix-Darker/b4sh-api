@@ -41,8 +41,6 @@ function globalInit(){
 
     // collapse accordion 1
     $("#edit").trigger("click");
-    // To generate the data-table
-    $('#mylist').DataTable();
 }
 
 
@@ -59,7 +57,7 @@ function generate(){
                 $("#showc").trigger("click");
             });
         }, 500);
-        
+
     }, 2000);
 }
 
