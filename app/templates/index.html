@@ -5,7 +5,6 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/> -->
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.01/ace.js"></script>
         <link rel="stylesheet" href="../static/css/index.css">
@@ -30,7 +29,7 @@
 
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#home">Edit Mode</a>
+                            <a class="nav-link active" data-toggle="tab" href="#home">Edit</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#about">About</a>
@@ -45,7 +44,7 @@
                                 <div class="card">
                                     <div class="card-header" role="button" data-toggle="collapse" href="#collapseOne">
                                         <a id="edit" style="text-decoration: none; color: #1E1E1E;">
-                                            <i class="mt-1 fas fa-edit"></i> Edit commands
+                                            <i class="mt-1 fas fa-edit"></i> Edit commands.
                                         </a>
                                     </div>
                                     <div id="collapseOne" class="collapse" data-parent="#accordion">
@@ -53,7 +52,7 @@
 
                                             <div id="editor_wrapper" class="app_editor_wrapper">
                                                 <div class="row">
-                                                    <div class="col-2 border p-0" style="overflow: auto;">
+                                                    <div class="col-2 border p-0" style="max-height: 300px; overflow: auto;">
                                                         <!-- A web component for listing tags -->
                                                         <w-tags tags="HelloWorld, Cerbot"></w-tags>
                                                         <!-- A web component for listing tags -->
@@ -77,25 +76,15 @@
                                 <div class="card">
                                     <div class="card-header" role="button" data-toggle="collapse" href="#collapseTwo">
                                         <a class="collapsed" id="showc" style="text-decoration: none; color: #1E1E1E;">
-                                            <i class="mt-1 fas fa-download"></i>  b4sh command
+                                            <i class="mt-1 fas fa-download"></i> Compressed command.
                                         </a>
                                     </div>
                                     <div id="collapseTwo" class="collapse" data-parent="#accordion">
                                         <div class="card-body">
                                             <div class="pb-3">
-                                                <small>Copy the generated command and paste it in your terminal !</small>
-
-                                                <kbd style="display: block;">
-                                                    <span id="co-input">curl -L -s <i></i>/b.sh | bash -s 0018843juh</span>
-                                                    <input type="text" style="display: none;" id="co-hidden"/>
-                                                    <i
-                                                        id="co"
-                                                        data-toggle="tooltip" 
-                                                        data-placement="top"
-                                                        title="Click to copy" 
-                                                        role="button"
-                                                        class="mt-1 fas fa-copy float-right"></i>
-                                                </kbd>
+                                                <!-- The web component for the compressed command -->
+                                                <w-command id="helloworld_12wwe"></w-command>
+                                                <!-- The web component for the compressed command -->
                                             </div>
                                         </div>
                                     </div>
@@ -103,11 +92,7 @@
                             </div>
                         </div>
                         <div class="tab-pane container fade p-0 pt-1" id="about">
-                            <h1>About</h1>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde ex ipsum eaque voluptatibus eos corrupti 
-                            debitis tempore sunt nesciunt. Sit quasi dicta ipsa quo facilis vitae quidem eveniet fugit architecto.
-                            <hr>
-                            <h5>Buy me a coffee</h5>
+                            <w-about></w-about>
                         </div>
                     </div>
                 </div>
@@ -127,6 +112,8 @@
         <script src="../static/js/components/Left.js"></script>
         <script src="../static/js/components/ListTags.js"></script>
         <script src="../static/js/components/Editor.js"></script>
+        <script src="../static/js/components/Command.js"></script>
+        <script src="../static/js/components/About.js"></script>
 
         <!-- Common Js stuff --> 
         <script src="../static/js/vars.js"></script>

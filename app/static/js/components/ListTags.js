@@ -25,14 +25,15 @@ class ListTags extends HTMLElement {
         });
 
         this.getElements().forEach((elt, index) => {
-            this.innerHTML += `
-                <span class="badge badge-default border">
+            if (elt.length > 1){
+                this.innerHTML += `
+                <span class="badge badge-default border" id="tag_${index}">
                     ${elt} 
-                    <b role="button" class="removeTag" id="${index}">&times;</b>
+                    <b role="button" class="removeTag" target-id="${index}">&times;</b>
                 </span>
             `;
-        })
-
+            }
+        });
     }
 }
 window.customElements.define('w-tags', ListTags);

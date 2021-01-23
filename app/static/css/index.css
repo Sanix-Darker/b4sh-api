@@ -9,3 +9,7 @@
 #editor {
     height: 290px;
 }
+
+kbd{
+    display: block;
+}

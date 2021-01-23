@@ -47,7 +47,7 @@ echo "Have FUN !"
         });
 
         this.innerHTML = `
-            <div id="editor">${this.getContent()}</div>
+            <div id="editor" class="rounded">${this.getContent()}</div>
             <div id="editor_dragbar" class="app_editor_dragbar"></div>
         `;
     }
