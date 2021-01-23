@@ -19,7 +19,7 @@ class Editor extends HTMLElement {
 echo "Hello World from b4sh !"
 
 echo "Click on GENERATE button !"
-echo "Copy and Paste the command line generated in your terminal !"
+echo "Copy/Paste the command generated in your terminal !"
 echo "Resize this editor to add more..."
 
 echo "Have FUN !"

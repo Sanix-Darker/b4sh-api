@@ -19,21 +19,13 @@ class Left extends HTMLElement {
         });
 
         this.innerHTML = `
-            <div class="form-group">
-                <select class="form-control w-100">
-                    <option value="" disabled selected>Filter by</option>
-                    <option value="most_used">Most Used</option>
-                    <option value="low_used">Low Used</option>
-                    <option value="mylist">My List</option>
-                </select>
-                <hr>
-                <input type="text" class="form-control" placeholder="Search a b4sh by title here...">
-            </div>
-            <hr>
+            <!-- Web component for filters -->
+            <w-filters></w-filters>
+            <!-- Web component for filters -->
 
             <!-- Web component to list my elements -->
-            <w-list-el></w-list-el>
-
+            <w-list-el style="max-height: 360px;overflow: auto;display: block;"></w-list-el>
+            <!-- Web component to list my elements -->
             <hr>
             <div class="row">
                 <div class="col" style="font-size: 10px;">

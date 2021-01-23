@@ -26,7 +26,7 @@ function initEditor(){
     editor.setTheme("ace/theme/twilight");
     editor.getSession().setMode("ace/mode/sh");
     editor.setOptions({
-        fontSize: "10pt"
+        fontSize: "12pt"
     })
     window.draggingAceEditor = {};
 

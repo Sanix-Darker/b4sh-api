@@ -45,7 +45,7 @@ class Right extends HTMLElement {
                                         <div class="row">
                                             <div class="col-2 border p-0" style="max-height: 300px; overflow: auto;">
                                                 <!-- A web component for listing tags -->
-                                                <w-tags tags="HelloWorld, Cerbot"></w-tags>
+                                                <w-tags tags="HelloWorld"></w-tags>
                                                 <!-- A web component for listing tags -->
                                             </div>
                                             <div class="col">
