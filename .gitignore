@@ -6,3 +6,5 @@ config.txt
 *_pycache__
 *.pyc
 *.idea
+*build.js
+*build.min.js

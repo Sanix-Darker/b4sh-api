@@ -15,3 +15,6 @@ pathlib
 
 # For captcha
 # pillow
+
+# To minify the build
+jsmin

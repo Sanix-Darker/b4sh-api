@@ -5,7 +5,7 @@
  */
 class ListTags extends HTMLElement {
 
-    logMe = () => {
+    logMe(){
         console.log("Clicked !");
     }
 

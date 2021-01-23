@@ -5,7 +5,7 @@
  */
 class Filters extends HTMLElement {
 
-    logMe = () => {
+    logMe(){
         console.log("Clicked !");
     }
 
@@ -21,7 +21,6 @@ class Filters extends HTMLElement {
         <div class="form-group">
             <select class="form-control w-100">
                 <option value="" disabled selected>Filter by</option>
-                <option value="low_used">Authentificated</option>
                 <option value="most_used">Most Used</option>
                 <option value="low_used">Low Used</option>
             </select>

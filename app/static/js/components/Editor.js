@@ -5,11 +5,11 @@
  */
 class Editor extends HTMLElement {
 
-    logMe = () => {
+    logMe(){
         console.log("Clicked !");
     }
 
-    standardContent = () => {
+    standardContent(){
         return `# ===---===---===---===---
 # Title* : helloworld
 # Version* : 0.0.1

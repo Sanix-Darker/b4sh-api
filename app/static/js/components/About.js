@@ -7,7 +7,7 @@
  */
 class About extends HTMLElement {
 
-    logMe = () => {
+    logMe(){
         console.log("Clicked !");
     }
 

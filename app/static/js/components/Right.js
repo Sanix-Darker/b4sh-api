@@ -6,7 +6,7 @@
  */
 class Right extends HTMLElement {
 
-    logMe = () => {
+    logMe(){
         console.log("Clicked !");
     }
 

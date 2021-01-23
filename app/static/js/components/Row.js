@@ -5,7 +5,7 @@
  */
 class Row extends HTMLElement {
 
-    logMe = () => {
+    logMe(){
         console.log("Clicked !");
     }
 

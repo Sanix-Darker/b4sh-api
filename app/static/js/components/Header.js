@@ -5,7 +5,7 @@
  */
 class Header extends HTMLElement {
 
-    logMe = () => {
+    logMe(){
         console.log("Clicked !");
     }
 

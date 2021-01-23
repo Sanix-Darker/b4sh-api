@@ -6,7 +6,7 @@
 
 class ListElements extends HTMLElement {
 
-    logMe = () => {
+    logMe(){
         console.log("Clicked !");
     }
 
