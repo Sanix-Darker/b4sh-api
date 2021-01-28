@@ -4,11 +4,13 @@ VERSION=0.0.1
 HOST="http://127.0.0.1:4352"
 
 
+# Just a custom exit method
 exit_b4sh()
 {
     echo "[-] Thanks for using b4sh."
     exit 1
 }
+
 
 # Ask to see the content before execute it
 see_content()
@@ -31,10 +33,23 @@ check_jq()
     if ! [ -x "$(command -v jq)" ]; then
         echo '[x] Error: jq is not installed in your system !' >&2
         echo "[x] Please install it manually > https://stedolan.github.io/jq/download/"
-        
+
         echo $"$1" > "${2}.sh"
         echo "[+] ${2}.sh saved locally !"
         echo "[-] However the script ${2}.sh have been saved localy !"
+
+        exit_b4sh
+    fi
+}
+
+
+# We check if curl is installed
+# if not we return an error but give the shell script
+check_curl()
+{
+    if ! [ -x "$(command -v curl)" ]; then
+        echo '[x] Error: curl is not installed in your system !' >&2
+        echo "[x] Please install it manually > https://curl.haxx.se/download.html"
 
         exit_b4sh
     fi
@@ -49,7 +64,7 @@ save()
     echo -n "[-] Choice (y/n): "
     read saveVAR
 
-    if [ $saveVAR == "y" ] || [ $saveVAR == "yes" ] || [ $saveVAR == "Y" ] || [ $saveVAR == "YES" ] 
+    if [ $saveVAR == "y" ] || [ $saveVAR == "yes" ] || [ $saveVAR == "Y" ] || [ $saveVAR == "YES" ]
     then
         echo $"$content" > "${key}.sh"
         echo "[+] ${key}.sh saved locally !"
@@ -57,22 +72,12 @@ save()
 }
 
 
+# The run method with a simple eval in it
 run()
 {
     echo "- - - - - - - - - - - - - - -"
     eval $"$1"
     echo "- - - - - - - - - - - - - - -"
-}
-
-
-execute()
-{
-    # We run the command
-    run $"$content"
-    # We try to save it
-    save
-    # Then we exit
-    exit_b4sh
 }
 
 
@@ -85,8 +90,8 @@ check_local_execute()
         echo "[?] Oh, this b4sh exist locally."
         echo -n "[?] Execute it (y/n) :"
 
-        read choi 
-        if [ $choi == "y" ] || [ $choi == "yes" ] || [ $choi == "Y" ] || [ $choi == "YES" ] 
+        read choi
+        if [ $choi == "y" ] || [ $choi == "yes" ] || [ $choi == "Y" ] || [ $choi == "YES" ]
         then
             echo "[-] Executing the local version..."
 
@@ -113,13 +118,15 @@ get_param()
 }
 
 
+# Our main method
 main()
 {
     echo "[+] b4sh v_${VERSION} started..."
+
     if [$1 == ""]
     then
-        echo "[x] You need to provide a b4sh-id to proceed..."
-        echo "[-] Ex : bash b.sh hello_world1234"
+        echo "[x] You need to provide a b4sh-id as a parameter to proceed..."
+        echo "[-] Ex : bash b.sh hello_world1234 OR "
         exit_b4sh
     fi
 
@@ -128,6 +135,9 @@ main()
     # We check locally the sh
     check_local_execute $1
 
+    # We check if curl is present or not
+    check_curl
+
     # We get online params
     get_param $1
 
@@ -135,9 +145,12 @@ main()
     check_jq $content $key
 
     # Proceed depending on status-code
-    if [[ $(echo $result | jq -r '.code') -eq 200 ]] 
+    if [[ $(echo $result | jq -r '.code') -eq 200 ]]
     then
-        execute
+        # We run the command
+        run $"$content"
+        # We try to save it
+        save
     else
         # We print the reason why the request failed
         reason=$(echo $result | jq -r '.reason')
