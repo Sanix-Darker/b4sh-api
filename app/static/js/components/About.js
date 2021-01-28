@@ -51,13 +51,11 @@ class About extends HTMLElement {
                     <li>If it's relevant, we're going to merge it. Yeah, it's simple as this !</li>
                 </ul>
             <hr>
-            
-            <h5>Buy us coffees</h5>
-                <a href="https://www.paypal.com/donate?hosted_button_id=ZBYQ8FLXE9D5L"></a>
-                <form action="https://www.paypal.com/donate" method="post" target="_top">
-                    <input type="hidden" name="hosted_button_id" value="ZBYQ8FLXE9D5L" />
-                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-                </form>
+
+            <h5>Help Us</h5>
+            <a href="https://ko-fi.com/R6R23GJRO" target="_blank">
+                <img height="36" style="border:0px;height:36px;" src="https://cdn.ko-fi.com/cdn/kofi5.png?v=2" border="0" alt="Buy Us a Coffee at ko-fi.com" />
+            </a>
         `;
     }
 }
