@@ -32,7 +32,7 @@ class Command extends HTMLElement {
         this.innerHTML = `
             <small>Copy the generated command and paste it in your terminal !</small>
 
-            <kbd style="width: max-content;" class="shadow-sm">
+            <kbd class="shadow-sm">
                 <span id="co-input">curl -L -s <i></i>/b.sh | bash -s ${this.getThis("id")}</span>
                 <input type="text" style="display: none;" id="co-hidden"/>
                 <i

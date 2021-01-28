@@ -51,7 +51,7 @@ FROM_  = """
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-        <!-- Utils Js stuff --> 
+        <!-- Utils Js stuff -->
         <script src="../static/js/vars.js"></script>
         <script src="../static/js/ace-editor-utils.js"></script>
         <script src="../static/js/utils.js"></script>
@@ -64,7 +64,7 @@ TO_ = """
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-        <!-- Utils Js stuff and Js components--> 
+        <!-- Utils Js stuff and Js components-->
         <script src="../static/js/build.min.js"></script>
 """
 

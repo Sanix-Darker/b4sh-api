@@ -10,13 +10,12 @@ class Editor extends HTMLElement {
     }
 
     standardContent(){
-        return `# ===---===---===---===--- \n# Title* : helloworld \n# Version* : 0.0.1 \n# Description* : Just an example of using b4sh \n# Operating system(s) : debian \n
-
+        return `# ===---===---===---===--- \n# title* : helloworld \n# version : 0.0.1 \n# description : Just an example of using b4sh \n# os : debian \n
 echo "Hello World from b4sh !"
 
-echo "Click on GENERATE button !"
-echo "Copy/Paste the command generated in your terminal !"
-echo "Resize this editor to add more..."
+# - Click on GENERATE button !
+# - Copy/Paste the command generated in your terminal !
+# - You can Resize this editor to add more...
 
 echo "Have FUN !" \n
 # ===---===---===---===---`
