@@ -32,14 +32,14 @@ class Filters extends HTMLElement {
                 <div class="col">
                     <small>
                         <label role="button">
-                            <input type="checkbox" id="check_all" /> Check All
+                            <input type="checkbox" id="check_all" /> Check All b4shs
                         </label>
                     </small>
                 </div>
                 <div class="col">
                     <small>
                         <label role="button">
-                            <input type="checkbox" id="my_list"/> Created
+                            <input type="checkbox" id="my_list"/> b4shs Created
                         </label>
                     </small>
                 </div>
@@ -49,7 +49,7 @@ class Filters extends HTMLElement {
                 <div class="col">
                     <small>
                         <label role="button">
-                            <input type="checkbox" id="my_list"/> Recently used
+                            <input type="checkbox" id="my_list"/> Recently Used
                         </label>
                     </small>
                 </div>
