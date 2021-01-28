@@ -1,6 +1,6 @@
 /**
  * The Web component responsible for each element in the list.
- * 
+ *
  * author : s@n1x-d4rk3r
  */
 class Element extends HTMLElement {
@@ -33,9 +33,9 @@ class Element extends HTMLElement {
             <label class="form-check-label" style="width: -webkit-fill-available;width: -moz-available;">
                 <li role='button' class="list-group-item d-flex justify-content-between align-items-center" style="padding-left: 30px;">
                     <input class="form-check-input" id="${this.getThis("id")}" type="checkbox">
-                    <span data-toggle="tooltip" 
-                        data-placement="top" 
-                        title="${this.getThis("version")} | ${this.getThis("os")}" 
+                    <span data-toggle="tooltip"
+                        data-placement="top"
+                        title="${this.getThis("version")} | ${this.getThis("os")}"
                         class="mt-1">${this.getThis("title")}</span>
                     <span class="badge badge-secondary badge-pill">${this.getThis("used_count")}</span>
                 </li>

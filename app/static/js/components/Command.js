@@ -1,6 +1,6 @@
 /**
  * The Web component is just the Command
- * 
+ *
  * author : s@n1x-d4rk3r
  */
 class Command extends HTMLElement {
@@ -31,15 +31,15 @@ class Command extends HTMLElement {
 
         this.innerHTML = `
             <small>Copy the generated command and paste it in your terminal !</small>
-            
+
             <kbd style="width: max-content;" class="shadow-sm">
                 <span id="co-input">curl -L -s <i></i>/b.sh | bash -s ${this.getThis("id")}</span>
                 <input type="text" style="display: none;" id="co-hidden"/>
                 <i
                     id="co"
-                    data-toggle="tooltip" 
+                    data-toggle="tooltip"
                     data-placement="top"
-                    title="Click to copy" 
+                    title="Click to copy"
                     role="button"
                     style="background: white;color: black;"
                     class="shadow-sm p-1 mt-n1 fas fa-copy float-right mr-n3">copy</i>

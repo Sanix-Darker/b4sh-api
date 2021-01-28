@@ -1,6 +1,6 @@
 /**
  * The Web component is just the Header
- * 
+ *
  * author : s@n1x-d4rk3r
  */
 class Header extends HTMLElement {

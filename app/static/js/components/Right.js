@@ -27,11 +27,11 @@ class Right extends HTMLElement {
                     <a class="nav-link" data-toggle="tab" href="#about">About</a>
                 </li>
             </ul>
-        
+
             <div class="tab-content">
                 <div class="tab-pane container active p-0 pt-2" id="home">
                     <div id="accordion">
-            
+
                         <div class="card">
                             <div class="card-header" role="button" data-toggle="collapse" href="#collapseOne">
                                 <a id="edit" style="text-decoration: none; color: #1E1E1E;">
@@ -40,7 +40,7 @@ class Right extends HTMLElement {
                             </div>
                             <div id="collapseOne" class="collapse" data-parent="#accordion">
                                 <div class="card-body">
-            
+
                                     <div id="editor_wrapper" class="app_editor_wrapper">
                                         <div class="row">
                                             <div class="col-2 border p-0" style="max-height: 300px; overflow: auto;">
@@ -51,7 +51,7 @@ class Right extends HTMLElement {
                                             <div class="col">
                                                 <!-- Web component for the Editor (&#13; is for a new line)-->
                                                 <w-editor content=""></w-editor>
-                                                <!-- Web component for the Editor (&#13; is for a new line)--> 
+                                                <!-- Web component for the Editor (&#13; is for a new line)-->
                                             </div>
                                         </div>
                                     </div>
@@ -63,7 +63,7 @@ class Right extends HTMLElement {
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="card">
                             <div class="card-header" role="button" data-toggle="collapse" href="#collapseTwo">
                                 <a class="collapsed" id="showc" style="text-decoration: none; color: #1E1E1E;">

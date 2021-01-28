@@ -1,6 +1,6 @@
 /**
  * The Web component is for the Editor.
- * 
+ *
  * author : s@n1x-d4rk3r
  */
 class Editor extends HTMLElement {
@@ -25,7 +25,7 @@ echo "Have FUN !" \n
     getContent(){
         if (this.hasAttribute("content")){
             if (this.getAttribute("content").length > 5){
-                return this.getAttribute("content"); 
+                return this.getAttribute("content");
             }else{
                 return this.standardContent()
             }

@@ -1,8 +1,6 @@
-
-
 /**
  * The Web component is just the Header
- * 
+ *
  * author : s@n1x-d4rk3r
  */
 class About extends HTMLElement {
@@ -21,8 +19,8 @@ class About extends HTMLElement {
 
         this.innerHTML = `
             <h1>About</h1>
-                <a href="https://github.com/Sanix-Darker/b4sh-api" target="_blank">b4sh</a> is an OpenSource project, 
-                created by <a href="https://github.com/sanix-darker" target="_blank">sanix-darker</a> to facilitate 
+                <a href="https://github.com/Sanix-Darker/b4sh-api" target="_blank">b4sh</a> is an OpenSource project,
+                created by <a href="https://github.com/sanix-darker" target="_blank">sanix-darker</a> to facilitate
                 the compilation of multiple instructions into one line.<br>
                 You can search, create, compose bashs commands and use it in your terminal !<br><br>
                 For example, instead of running theese commands to install Docker on Ubuntu :

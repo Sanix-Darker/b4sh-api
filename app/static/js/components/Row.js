@@ -1,6 +1,6 @@
 /**
  * The Web component is for a row in the table of the list
- * 
+ *
  * author : s@n1x-d4rk3r
  */
 class Row extends HTMLElement {
@@ -36,20 +36,20 @@ class Row extends HTMLElement {
                 <td>
                     <div class="row">
                         <div class="col">
-                            <i role="button" 
+                            <i role="button"
                                 class="fas fa-copy"
-                                data-toggle="tooltip" 
+                                data-toggle="tooltip"
                                 data-placement="top"
-                                title="${this.getThis("command")}" ></i> 
+                                title="${this.getThis("command")}" ></i>
                         </div>
                         <div class="col">
                             <i role="button" class="fas fa-eye" data-toggle="modal" data-target="#modal${this.getThis("key")}"></i>
-            
+
                             <!-- Modal -->
-                            <div class="modal fade" 
-                                id="modal${this.getThis("key")}" 
-                                tabindex="-1" role="dialog" 
-                                aria-labelledby="modal${this.getThis("key")}Label" 
+                            <div class="modal fade"
+                                id="modal${this.getThis("key")}"
+                                tabindex="-1" role="dialog"
+                                aria-labelledby="modal${this.getThis("key")}Label"
                                 aria-hidden="true" >
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -68,7 +68,6 @@ class Row extends HTMLElement {
                                     </div>
                                 </div>
                             </div>
-            
                         </div>
                     </div>
                 </td>

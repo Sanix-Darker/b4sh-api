@@ -1,6 +1,6 @@
 /**
  * The Web component responsible for the list of elements.
- * 
+ *
  * author : s@n1x-d4rk3r
  */
 
@@ -112,7 +112,7 @@ class ListElements extends HTMLElement {
 
         this.getElements().forEach((el) => {
             this.innerHTML += `
-            <w-el 
+            <w-el
                 id = "${el.id}" title = "${el.title}"
                 content = "${el.content}"
                 hash = "${el.hash}"
