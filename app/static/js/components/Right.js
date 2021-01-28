@@ -35,7 +35,7 @@ class Right extends HTMLElement {
                         <div class="card">
                             <div class="card-header" role="button" data-toggle="collapse" href="#collapseOne">
                                 <a id="edit" style="text-decoration: none; color: #1E1E1E;">
-                                    <i class="mt-1 fas fa-edit"></i> Edit commands.
+                                    <i class="mt-1 fas fa-edit"></i> &#x1F589; Edit commands.
                                 </a>
                             </div>
                             <div id="collapseOne" class="collapse" data-parent="#accordion">
@@ -57,7 +57,7 @@ class Right extends HTMLElement {
                                     </div>
                                     <div class="pb-5 pt-3">
                                         <button class="btn btn-primary float-right" id="gen" onclick="generate()">
-                                            GENERATE
+                                        &#x2387; GENERATE
                                         </button>
                                     </div>
                                 </div>
@@ -67,7 +67,7 @@ class Right extends HTMLElement {
                         <div class="card">
                             <div class="card-header" role="button" data-toggle="collapse" href="#collapseTwo">
                                 <a class="collapsed" id="showc" style="text-decoration: none; color: #1E1E1E;">
-                                    <i class="mt-1 fas fa-download"></i> Compressed command.
+                                    <i class="mt-1 fas fa-download"></i> &#x21A7; Compressed command.
                                 </a>
                             </div>
                             <div id="collapseTwo" class="collapse" data-parent="#accordion">

@@ -46,7 +46,7 @@ function globalInit(){
 
 function generate(){
     $("#gen").prop('disabled', true);
-    $("#gen").html('<span class="spinner-border spinner-border-sm"></span> LOADING...');
+    $("#gen").html('&#x267D; LOADING...');
 
     setTimeout(() => {
         $("#gen").prop('disabled', false);

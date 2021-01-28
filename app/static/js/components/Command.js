@@ -42,7 +42,7 @@ class Command extends HTMLElement {
                     title="Click to copy"
                     role="button"
                     style="background: white;color: black;"
-                    class="shadow-sm p-1 mt-n1 fas fa-copy float-right mr-n3">copy</i>
+                    class="shadow-sm p-1 mt-n1 fas fa-copy float-right mr-n3">&#x1F5DE; copy</i>
             </kbd>
             <hr>
             <small>This command will be available and will work as long as the earth is round !</small>

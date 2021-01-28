@@ -20,39 +20,53 @@ class Filters extends HTMLElement {
         this.innerHTML = `
             <div class="form-group">
                 <select class="form-control w-100">
-                    <option value="" disabled selected>Filter by</option>
+                    <option value="" disabled selected>&#x1F50D; Filter by</option>
                     <option value="most_used">Most Used</option>
                     <option value="low_used">Low Used</option>
                 </select>
                 <hr>
-                <input type="text" class="form-control" placeholder="Search a b4sh by title here...">
+                <input type="text" class="form-control" placeholder="&#x1F50D; Search a b4sh by title here...">
             </div>
             <hr>
-            <small>
-                <label role="button">
-                    <input type="checkbox" id="check_all" /> Check All
-                </label>
-            </small>
-            &nbsp;&nbsp;
-            <small>
-                <label role="button">
-                    <input type="checkbox" id="my_list"/> My List
-                </label>
-            </small>
-            &nbsp;&nbsp;
-            <small>
-                <label role="button">
-                    <input type="checkbox" id="my_list"/> Recently used
-                </label>
-            </small>
-            &nbsp;&nbsp;
-            <small></small>
-                <label role="button">
-                    <input type="checkbox" id="my_list"/> Certified
-                </label>
-            </small>
-            &nbsp;&nbsp;
-            <span class="badge badge-primary badge-pill"> 123 Commands</span>
+            <div class="row">
+                <div class="col">
+                    <small>
+                        <label role="button">
+                            <input type="checkbox" id="check_all" /> Check All
+                        </label>
+                    </small>
+                </div>
+                <div class="col">
+                    <small>
+                        <label role="button">
+                            <input type="checkbox" id="my_list"/> Created
+                        </label>
+                    </small>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <small>
+                        <label role="button">
+                            <input type="checkbox" id="my_list"/> Recently used
+                        </label>
+                    </small>
+                </div>
+                <div class="col">
+                    <small></small>
+                        <label role="button">
+                            <input type="checkbox" id="my_list"/> Certified
+                        </label>
+                    </small>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span class="badge badge-primary badge-pill"> 123 b4sh found</span>
+                </div>
+            </div>
+            <hr>
         `;
     }
 }
