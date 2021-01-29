@@ -38,9 +38,6 @@ function globalInit(){
 
     // We set the host
     $("#co-input i").html(location.hostname);
-
-    // collapse accordion 1
-    $("#edit").trigger("click");
 }
 
 

@@ -22,6 +22,10 @@ class Header extends HTMLElement {
                 <!-- Brand -->
                 <div class="container">
                     <a class="navbar-brand" href="#">_b4sh<span style="font-size: 10px;">, The command line manager for humans.</span> </a>
+                    <div class="toggle float-right darkk">
+                        <input id="switch" class="theme" type="checkbox" name="theme">
+                        <label for="switch">Toggle</label>
+                    </div>
                 </div>
             </nav>
         `;

@@ -63,7 +63,7 @@ class Filters extends HTMLElement {
             </div>
             <div class="row">
                 <div class="col">
-                    <span class="badge badge-primary badge-pill"> 123 b4sh found</span>
+                    <span class="badge badge-primary badge-pill"> 123 b4sh(s) found</span>
                 </div>
             </div>
             <hr>
