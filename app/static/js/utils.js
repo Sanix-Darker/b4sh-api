@@ -1,3 +1,8 @@
+/**
+ * 
+ * @param {*} text 
+ * @param {*} el 
+ */
 function copyToClipboard(text, el) {
     var copyTest = document.queryCommandSupported('copy');
     var elOriginalText = el.attr('data-original-title');
@@ -22,6 +27,9 @@ function copyToClipboard(text, el) {
     }
 }
 
+/**
+ * initEditor
+ */
 function initEditor(){
     editor.setTheme("ace/theme/twilight");
     editor.getSession().setMode("ace/mode/sh");
@@ -33,6 +41,9 @@ function initEditor(){
     makeAceEditorResizable(editor);
 }
 
+/**
+ * globalInit
+ */
 function globalInit(){
     $('[data-toggle="tooltip"]').tooltip();
 
@@ -41,6 +52,9 @@ function globalInit(){
 }
 
 
+/**
+ * generate
+ */
 function generate(){
     $("#gen").prop('disabled', true);
     $("#gen").html('&#x267D; LOADING...');
