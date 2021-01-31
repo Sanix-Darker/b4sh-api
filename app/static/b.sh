@@ -19,7 +19,7 @@ see_content()
     echo -n "[-] Choice (y/n): "
     read choiX
 
-    if [ $choiX == "y" ] || [ $choiX == "yes" ] || [ $choiX == "Y" ] || [ $choiX == "YES" ]
+    if [ "$choiX"  == "y" ] || [ "$choiX"  == "yes" ] || [ "$choiX"  == "Y" ] || [ "$choiX"  == "YES" ]
     then
         $"${1}"
     fi
@@ -60,15 +60,8 @@ check_curl()
 # if yes or no it should save shell script
 save()
 {
-    echo "[?] Save this script locally ?"
-    echo -n "[-] Choice (y/n): "
-    read saveVAR
-
-    if [ $saveVAR == "y" ] || [ $saveVAR == "yes" ] || [ $saveVAR == "Y" ] || [ $saveVAR == "YES" ]
-    then
-        echo $"$content" > "${key}.sh"
-        echo "[+] ${key}.sh saved locally !"
-    fi
+    echo $"$content" > "${key}.sh"
+    echo "[+] ${key}.sh saved locally !"
 }
 
 
@@ -121,16 +114,7 @@ get_param()
 # Our main method
 main()
 {
-    echo "[+] b4sh v_${VERSION} started..."
-
-    if [$1 == ""]
-    then
-        echo "[x] You need to provide a b4sh-id as a parameter to proceed..."
-        echo "[-] Ex : bash b.sh hello_world1234 OR "
-        exit_b4sh
-    fi
-
-    echo "[-] Processing $HOST/$1..."
+    echo "[+] b4sh v_${VERSION} processing $HOST/$1..."
 
     # We check locally the sh
     check_local_execute $1
