@@ -2,8 +2,18 @@ var content_size = 0;
 var content = "";
 var editor_status = $("#editor-status");
 var generate_button = $("#gen");
+var copy_button = $("#co");
+var copy_content_button = $("#co-input");
 
+var command_box = $("#command_box");
 
+// var host_api = "https://b4sh.co/api";
+var host_api = "http://127.0.0.1:4352/api";
+
+/**
+ *
+ * @param {*} key
+ */
 function get_range(key){
     return editor.find(key,{
         wrap: true,
@@ -12,6 +22,15 @@ function get_range(key){
         regExp: true,
         preventScroll: true // do not change selection
     });
+}
+
+/**
+ *
+ * @param {*} row
+ */
+function get_value_from_row(row){
+    var value = editor.getSession().getLine(row).split(":")[1];
+    return typeof value !== "undefined" ? value : "";
 }
 
 /**
@@ -28,30 +47,43 @@ function generate(){
     var search_os = get_range('_os_');
 
     if (search_title){
-        var title = editor.getSession().getLine(search_title?.start.row).split(":")[1];
-        var version = editor.getSession().getLine(search_version?.start.row).split(":")[1];
-        var description = editor.getSession().getLine(search_description?.start.row).split(":")[1];
-        var os = editor.getSession().getLine(search_os?.start.row).split(":")[1];
+        var title = get_value_from_row(search_title?.start.row);
+        var version = get_value_from_row(search_version?.start.row);
+        var description = get_value_from_row(search_description?.start.row);
+        var os = get_value_from_row(search_os?.start.row);
         var author = "- - - - - ";
 
-        const obj = {
-            title,
-            version,
-            description,
-            os,
-            author,
-            content
-        }
-        console.log("obj: ", obj)
+        (async () => {
+            const rawResponse = await fetch(host_api, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    title, version,
+                    description, os,
+                    author, content
+                })
+            });
+            const response = await rawResponse.json();
+
+            generate_button.html('&#x2714; GENERATED');
+
+            console.log("content: ", response);
+            // we set the keyof the commnd-box
+            command_box.attr("key", response?.result?.key);
+
+            setTimeout(() => {
+                generate_button.html('&#x27F3; GENERATE');
+            }, 2000);
+
+        })();
 
     }else{
         editor_status.html(`<span style="color: red;">[x]You need to have the _title_ attribute with a value in your editor !</span>`);
     }
 
-    setTimeout(() => {
-        generate_button.html('&#x2714; GENERATED');
-
-    }, 2000);
 }
 
 
@@ -63,14 +95,11 @@ $(document).ready(function(){
     initEditor();
 
     // The clipBoard stuff
-    $('#co').click(function() {
-        var text = document.querySelector('#co-input').innerHTML;
-        var el = $(this);
-        copyToClipboard(text, el);
+    copy_button.click(function() {
+        copyToClipboard(copy_content_button.innerHTML, $(this));
     });
 
     editor.getSession().setNewLineMode("unix");
-
 
     content = editor.session.getValue();
     content_size = content.length;
@@ -87,9 +116,9 @@ $(document).ready(function(){
             editor_status.html(`<span style="color: red;">[x] Too much characters, more than 15000 is not allowed...</span>`);
         }else{
             if (content != editor.session.getValue()){
-                generate_button.slideDown("slow", function() {});
+                generate_button.slideDown("slow");
             }else{
-                generate_button.slideUp("slow", function() {});
+                generate_button.slideUp("slow");
             }
 
             content = editor.session.getValue();

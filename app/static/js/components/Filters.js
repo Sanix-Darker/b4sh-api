@@ -19,13 +19,13 @@ class Filters extends HTMLElement {
 
         this.innerHTML = `
             <div class="form-group">
-                <select class="form-control w-100">
+                <select class="form-control w-100" id="filter_select">
                     <option value="" disabled selected>&#x1F50D; Filter by</option>
-                    <option value="most_used">Most Used</option>
-                    <option value="low_used">Low Used</option>
+                    <option value="most_used" style="color: black;">Most Used</option>
+                    <option value="low_used" style="color: black;">Low Used</option>
                 </select>
                 <hr>
-                <input type="text" class="form-control" placeholder="&#x1F50D; Search a b4sh by title here...">
+                <input type="text" id="search_text" class="form-control" placeholder="&#x1F50D; Search a b4sh by title here...">
             </div>
             <hr>
             <div class="row">
@@ -44,7 +44,7 @@ class Filters extends HTMLElement {
                         </label>
                     </small>
                 </div>
- 
+
                 <div class="col-12">
                     <span class="badge badge-default badge-pill"> 123 b4sh(s)</span>
                 </div>

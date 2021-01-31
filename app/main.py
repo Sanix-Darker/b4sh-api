@@ -30,7 +30,7 @@ def _api():
         "status": "success",
         'message': "Welcome to b4sh API.",
         "description": "This API allows you to CRUD your bash commands and share it to others.",
-        "documentation": "https://documenter.getpostman.com/view/11958813/TVmJhJmA"
+        "documentation": "https://documenter.getpostman.com/view/2696027/TW6zFS7y"
     })
 
 

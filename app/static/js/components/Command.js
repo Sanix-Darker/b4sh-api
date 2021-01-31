@@ -31,7 +31,7 @@ class Command extends HTMLElement {
 
         this.innerHTML = `
             <kbd class="shadow-sm">
-                <small id="co-input">curl -L -s <i></i>/b.sh | bash -s ${this.getThis("id")}</small>
+                <small id="co-input">curl -L -s <i></i>/b.sh | bash -s ${this.getThis("key")}</small>
                 <input type="text" style="display: none;" id="co-hidden"/>
                 <i
                     id="co"
@@ -46,8 +46,4 @@ class Command extends HTMLElement {
     }
 }
 window.customElements.define('w-command', Command);
-
-
-
-
 

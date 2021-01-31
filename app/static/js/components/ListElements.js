@@ -14,7 +14,7 @@ class ListElements extends HTMLElement {
         return [
             {
                 "id": "apache2_debian_46487",
-                "title": "&#x1F44D; Apache2 debian",
+                "title": "&#x66D; Apache2 debian",
                 "content": "echo 'Test !'",
                 "hash": "f1899d142cb91ed98058d1f3",
                 "author": "d4rk3r",
@@ -46,7 +46,7 @@ class ListElements extends HTMLElement {
             },
             {
                 "id": "Other_stuff_46487",
-                "title": "&#x1F44D; Nyama stuff*",
+                "title": "&#x66D; Nyama stuff*",
                 "content": "echo 'Others !'",
                 "hash": "10jdje44tddssskodkendnns",
                 "author": "markof",
@@ -107,7 +107,7 @@ class ListElements extends HTMLElement {
         });
 
         this.innerHTML = `
-            <div class="list-group " style="max-height: 2px;overflow: auto;display: block;">
+            <div class="list-group " id="list_elements" style="max-height: 2px;overflow: auto;display: block;">
         `;
 
         this.getElements().forEach((el) => {

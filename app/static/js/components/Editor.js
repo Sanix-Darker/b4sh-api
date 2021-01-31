@@ -10,11 +10,11 @@ class Editor extends HTMLElement {
     }
 
     standardContent(){
-        return `#!/bin/bash \n\n# _title_ : helloworld \n# _version_ : 0.0.1 \n# _description_ : Just an example of using b4sh \n# _os_ : debian \n
+        return `#!/bin/bash \n\n# _title_ : helloworld \n
 echo "Hello World !"
 
-# - The title parameter is required.
-# - Click on GENERATE and try the command in your terminal !
+# - Update this script and click on  GENERATE !
+# - Copy/Paste the generated command in your terminal.
 # - You can Resize this editor to add more...`
     }
 

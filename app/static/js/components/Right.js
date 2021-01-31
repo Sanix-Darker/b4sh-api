@@ -50,7 +50,7 @@ class Right extends HTMLElement {
                                 <div class="row pb-5 pt-3">
                                     <div class="col-9 pt-1">
                                         <!-- The web component for the compressed command -->
-                                        <w-command id="helloworld_12wwe"></w-command>
+                                        <w-command id="command_box" key="hello_world_234dde"></w-command>
                                         <!-- The web component for the compressed command -->
                                     </div>
                                     <div class="col">

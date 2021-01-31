@@ -22,8 +22,24 @@ const changeColors = (colors) => {
   );
 }
 
+var search_text = $("#search_text");
+var filter_select = $("#filter_select");
+
+
 checkbox.addEventListener("change", ({target}) => {
-    target.checked ? changeColors(darkMode) : changeColors(initialColors);
+    if (target.checked){
+        changeColors(darkMode);
+        editor.setTheme("ace/theme/twilight");
+
+        search_text.attr("style", "color: white; background: 0;");
+        filter_select.attr("style", "color: white; background: 0;");
+    }else{
+        changeColors(initialColors);
+        editor.setTheme("ace/theme/clouds");
+
+        search_text.attr("style", "color: black; background: white;");
+        filter_select.attr("style", "color: black; background: white;");
+    }
 });
 
 const isExistLocalStorage = (key) =>
@@ -89,10 +105,24 @@ function copyToClipboard(text, el) {
  * initEditor
  */
 function initEditor(){
-    editor.setTheme("ace/theme/twilight");
+
+    console.log("checkbox.checked: ", checkbox.checked);
+
+    if (checkbox.checked == true){
+        changeColors(darkMode);
+        editor.setTheme("ace/theme/twilight");
+        search_text.attr("style", "color: white; background: 0;");
+        filter_select.attr("style", "color: white; background: 0;");
+    }else{
+        changeColors(initialColors);
+        editor.setTheme("ace/theme/clouds");
+        search_text.attr("style", "color: black; background: white;");
+        filter_select.attr("style", "color: black; background: white;");
+    }
+
     editor.getSession().setMode("ace/mode/sh");
     editor.setOptions({
-        fontSize: "10pt"
+        fontSize: "11pt"
     })
     window.draggingAceEditor = {};
 
@@ -106,7 +136,7 @@ function globalInit(){
     $('[data-toggle="tooltip"]').tooltip();
 
     // We set the host
-    $("#co-input i").html(location.hostname);
+    $("#co-input i").html(location.origin);
 }
 
 // A digit formatter

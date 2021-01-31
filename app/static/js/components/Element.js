@@ -30,8 +30,8 @@ class Element extends HTMLElement {
         });
 
         this.innerHTML = `
-            <label class="form-check-label" style="width: -webkit-fill-available;width: -moz-available;color: black;">
-                <li role='button' class="list-group-item d-flex justify-content-between align-items-center" style="padding-left: 30px;">
+            <label class="form-check-label" style="background: 0;width: -webkit-fill-available;width: -moz-available;">
+                <li role='button' class="list-group-item d-flex justify-content-between align-items-center" style="padding-left: 30px;background: 0;">
                     <input class="form-check-input" id="${this.getThis("id")}" type="checkbox">
                     <span data-toggle="tooltip"
                         data-placement="top"
