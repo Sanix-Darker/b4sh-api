@@ -6,7 +6,7 @@
 class Header extends HTMLElement {
 
     logMe(){
-        console.log("Clicked !");
+        // console.log("Clicked !");
     }
 
     constructor(){
