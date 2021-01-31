@@ -10,7 +10,7 @@ class Editor extends HTMLElement {
     }
 
     standardContent(){
-        return `#!/bin/bash \n\n# _title_ : helloworld \n
+        return `#!/bin/bash\n\n# _title_ : helloworld \n
 echo "Hello World !"
 
 # - Update this script and click on  GENERATE !
@@ -20,11 +20,10 @@ echo "Hello World !"
 
     getContent(){
         if (this.hasAttribute("content")){
-            if (this.getAttribute("content").length > 5){
+            if (this.getAttribute("content").length > 5)
                 return this.getAttribute("content");
-            }else{
+            else
                 return this.standardContent()
-            }
         }else
             return this.standardContent()
     }

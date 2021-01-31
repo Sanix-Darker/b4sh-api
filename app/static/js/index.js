@@ -91,6 +91,9 @@ $(document).ready(function(){
     // Global initialisations
     globalInit();
 
+    // Theme initiator
+    dark_white_theme_init();
+
     // Initialisation of the editor
     initEditor();
 

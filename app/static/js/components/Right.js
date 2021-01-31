@@ -31,7 +31,7 @@ class Right extends HTMLElement {
             <div class="tab-content">
                 <div class="tab-pane container active p-0 pl-3 pt-2" id="home">
                     <h4>
-                        <i class="mt-1 fas fa-edit"></i> &#x1F589; Editor
+                        &#x1F589; Editor
                         <span class="float-right">&#x2BB9;</span>
                     </h4>
 

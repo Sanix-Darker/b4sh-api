@@ -57,6 +57,7 @@ body {
 
 .darkk input:checked + label {
     background-color: var(--color-headings);
+    border: 1px solid white;
 }
 
 .darkk input:checked + label::after {

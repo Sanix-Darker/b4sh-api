@@ -102,12 +102,9 @@ function copyToClipboard(text, el) {
 }
 
 /**
- * initEditor
+ * dark_white_theme_init
  */
-function initEditor(){
-
-    console.log("checkbox.checked: ", checkbox.checked);
-
+function dark_white_theme_init(){
     if (checkbox.checked == true){
         changeColors(darkMode);
         editor.setTheme("ace/theme/twilight");
@@ -116,9 +113,15 @@ function initEditor(){
     }else{
         changeColors(initialColors);
         editor.setTheme("ace/theme/clouds");
-        search_text.attr("style", "color: black; background: white;");
-        filter_select.attr("style", "color: black; background: white;");
+        search_text.attr("style", "color: #495057; background: white;");
+        filter_select.attr("style", "color: #495057; background: white;");
     }
+}
+
+/**
+ * initEditor
+ */
+function initEditor(){
 
     editor.getSession().setMode("ace/mode/sh");
     editor.setOptions({
