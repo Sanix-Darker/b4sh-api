@@ -24,7 +24,7 @@ class Left extends HTMLElement {
             <!-- Web component for filters -->
 
             <!-- Web component to list my elements -->
-            <w-list-el style="max-height: 360px;overflow: auto;display: block;"></w-list-el>
+            <w-list-el style="max-height: 370px;overflow: auto;display: block;"></w-list-el>
             <!-- Web component to list my elements -->
             <hr>
             <div class="row">

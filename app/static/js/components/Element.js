@@ -36,7 +36,7 @@ class Element extends HTMLElement {
                     <span data-toggle="tooltip"
                         data-placement="top"
                         title="${this.getThis("version")} | ${this.getThis("os")}"
-                        class="mt-1">${this.getThis("title")}</span>
+                        class="mt-1" style="font-size: 15px;">${this.getThis("title")}</span>
                     <span class="badge badge-secondary badge-pill">${this.getThis("used_count")}</span>
                 </li>
             </label>

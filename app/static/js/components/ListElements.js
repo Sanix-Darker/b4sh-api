@@ -14,7 +14,7 @@ class ListElements extends HTMLElement {
         return [
             {
                 "id": "apache2_debian_46487",
-                "title": "Apache2 debian",
+                "title": "&#x1F44D; Apache2 debian",
                 "content": "echo 'Test !'",
                 "hash": "f1899d142cb91ed98058d1f3",
                 "author": "d4rk3r",
@@ -46,7 +46,7 @@ class ListElements extends HTMLElement {
             },
             {
                 "id": "Other_stuff_46487",
-                "title": "Nyama stuff",
+                "title": "&#x1F44D; Nyama stuff*",
                 "content": "echo 'Others !'",
                 "hash": "10jdje44tddssskodkendnns",
                 "author": "markof",
