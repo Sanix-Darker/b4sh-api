@@ -3,7 +3,7 @@ var content = "";
 var editor_status = $("#editor-status");
 var generate_button = $("#gen");
 var copy_button = $("#co");
-var copy_content_button = $("#co-input");
+var copy_content_button = document.querySelector("#co-input");
 
 var command_box = $("#command_box");
 
@@ -54,7 +54,7 @@ function generate(){
         var author = "- - - - - ";
 
         (async () => {
-            const rawResponse = await fetch(host_api, {
+            const rawResponse = await fetch(host_api + "/b", {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -71,8 +71,9 @@ function generate(){
             generate_button.html('&#x2714; GENERATED');
 
             console.log("content: ", response);
+            console.log("response?.result?.key: ", response?.result?.key)
             // we set the keyof the commnd-box
-            command_box.attr("key", response?.result?.key);
+            copy_content_button.innerHTML = `curl -L -s ${location.origin}/b.sh | bash -s ${response?.result?.key}`;
 
             setTimeout(() => {
                 generate_button.html('&#x27F3; GENERATE');
