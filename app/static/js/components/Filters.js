@@ -44,12 +44,7 @@ class Filters extends HTMLElement {
                         </label>
                     </small>
                 </div>
-
-                <div class="col-12">
-                    <span class="badge badge-default badge-pill"> 123 b4sh(s)</span>
-                </div>
             </div>
-            <hr>
         `;
     }
 }

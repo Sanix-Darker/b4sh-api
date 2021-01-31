@@ -15,7 +15,7 @@ echo "Hello World !"
 
 # - Update this script and click on  GENERATE !
 # - Copy/Paste the generated command in your terminal.
-# - You can Resize this editor to add more...`
+# - You can Resize this editor to add more...\n`
     }
 
     getContent(){

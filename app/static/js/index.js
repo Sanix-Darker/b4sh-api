@@ -108,6 +108,9 @@ $(document).ready(function(){
     content_size = content.length;
     editor_status.html(`${content_size}/15000 chars`);
 
+
+    $("#count_all").html(nFormatter(135004));
+
     // A security check for too much characters
     // of bash code
     editor.getSession().on('change', function(elt) {
