@@ -30,10 +30,8 @@ class Command extends HTMLElement {
         });
 
         this.innerHTML = `
-            <small>Copy the generated command and paste it in your terminal !</small>
-
             <kbd class="shadow-sm">
-                <span id="co-input">curl -L -s <i></i>/b.sh | bash -s ${this.getThis("id")}</span>
+                <small id="co-input">curl -L -s <i></i>/b.sh | bash -s ${this.getThis("id")}</small>
                 <input type="text" style="display: none;" id="co-hidden"/>
                 <i
                     id="co"
@@ -44,8 +42,6 @@ class Command extends HTMLElement {
                     style="background: white;color: black;"
                     class="shadow-sm p-1 mt-n1 fas fa-copy float-right mr-n3">&#x1F5DE; copy</i>
             </kbd>
-            <hr>
-            <small>This command will be available and will work as long as the earth is round !</small>
         `;
     }
 }

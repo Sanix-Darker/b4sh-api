@@ -44,13 +44,11 @@ class About extends HTMLElement {
 
             <h5>How to contribute</h5>
                 <ul>
-                    <li>Create an issue where you explain clearly everything.</li>
-                    <li>Make a Pull Request.</li>
-                    <li>If it's relevant, we're going to merge it. Yeah, it's simple as this !</li>
+                    <li>By coding, jump to the source code.</li>
+                    <li>By motivating with some donations.</li>
                 </ul>
             <hr>
 
-            <h5>Help Us</h5>
             <a href="https://ko-fi.com/R6R23GJRO" target="_blank">
                 <img height="36" style="border:0px;height:36px;" src="https://cdn.ko-fi.com/cdn/kofi5.png?v=2" border="0" alt="Buy Us a Coffee at ko-fi.com" />
             </a>

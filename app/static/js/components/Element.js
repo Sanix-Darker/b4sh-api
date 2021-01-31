@@ -30,7 +30,7 @@ class Element extends HTMLElement {
         });
 
         this.innerHTML = `
-            <label class="form-check-label" style="width: -webkit-fill-available;width: -moz-available;">
+            <label class="form-check-label" style="width: -webkit-fill-available;width: -moz-available;color: black;">
                 <li role='button' class="list-group-item d-flex justify-content-between align-items-center" style="padding-left: 30px;">
                     <input class="form-check-input" id="${this.getThis("id")}" type="checkbox">
                     <span data-toggle="tooltip"

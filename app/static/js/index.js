@@ -1,60 +1,42 @@
-const html = document.querySelector("html")
-const checkbox = document.querySelector("input[class=theme]")
+var content_size = 0;
+var content = "";
+var editor_status = $("#editor-status");
+var generate_button = $("#gen");
 
-const getStyle = (element, style) =>
-  window
-    .getComputedStyle(element)
-    .getPropertyValue(style);
 
-const initialColors = {
-  bg: getStyle(html, "--bg"),
-}
+/**
+ * generate
+ */
+function generate(){
+    generate_button.prop('disabled', true);
+    generate_button.html('&#x267D; LOADING...');
 
-const darkMode = {
-  bg: "#333333", // override styles here
-}
+    // We get the content from the editor
+    var search_title = editor.find('_title_',{
+        wrap: true,
+        caseSensitive: true,
+        wholeWord: true,
+        regExp: true,
+        preventScroll: true // do not change selection
+    });
 
-const transformKey = key =>
-  "--" + key.replace(/([A-Z])/, "-$1").toLowerCase();
+    if (search_title){
 
-const changeColors = (colors) => {
-  Object.keys(colors).map(key =>
-    html.style.setProperty(transformKey(key), colors[key])
-  );
-}
+    }else{
+        editor_status.html(`<span style="color: red;">[x]You need to have the _title_ attribute with a value in your editor !</span>`);
+    }
 
-checkbox.addEventListener("change", ({target}) => {
-    target.checked ? changeColors(darkMode) : changeColors(initialColors);
-});
+    setTimeout(() => {
+        generate_button.prop('disabled', false);
+        generate_button.html('GENERATED');
 
-const isExistLocalStorage = (key) =>
-  localStorage.getItem(key) != null;
+        setTimeout(() => {
+            generate_button.slideUp("slow", function() {
+ 
+            });
+        }, 500);
 
-const createOrEditLocalStorage = (key, value) =>
-  localStorage.setItem(key, JSON.stringify(value));
-
-const getValeuLocalStorage = (key) =>
-  JSON.parse(localStorage.getItem(key));
-
-checkbox.addEventListener("change", ({target}) => {
-  if (target.checked) {
-    changeColors(darkMode);
-    createOrEditLocalStorage('mode','darkMode');
-  } else {
-    changeColors(initialColors);
-    createOrEditLocalStorage('mode','initialColors');
-  }
-})
-
-if(!isExistLocalStorage('mode'))
-  createOrEditLocalStorage('mode', 'initialColors');
-
-if (getValeuLocalStorage('mode') === "initialColors") {
-  checkbox.removeAttribute('checked');
-  changeColors(initialColors);
-} else {
-  checkbox.setAttribute('checked', "");
-  changeColors(darkMode);
+    }, 2000);
 }
 
 
@@ -74,20 +56,32 @@ $(document).ready(function(){
 
     editor.getSession().setNewLineMode("unix");
 
-    console.log(JSON.stringify(editor.getSession().doc.getNewLineCharacter()))
+
+    content = editor.session.getValue();
+    content_size = content.length;
+    editor_status.html(`${content_size}/15000 chars`);
 
     // A security check for too much characters
     // of bash code
-    editor.getSession().on('change', function() {
-        if(editor.session.getValue().length > 15000){
-            alert("[x] Too much characters, more than 15000 is not allowed...")
+    editor.getSession().on('change', function(elt) {
+        generate_button.prop('disabled', false);
+        // console.log("elt: ", elt);
+        editor_status.html(`Writing...`);
+
+        if(content_size > 15000){
+            editor_status.html(`<span style="color: red;">[x] Too much characters, more than 15000 is not allowed...</span>`);
         }else{
             if (content != editor.session.getValue()){
-                $("#gen").slideDown("slow", function() {});
+                generate_button.slideDown("slow", function() {});
             }else{
-                $("#gen").slideUp("slow", function() {});
+                generate_button.slideUp("slow", function() {});
             }
+
             content = editor.session.getValue();
+            content_size = content.length;
+            setTimeout(() => {
+                editor_status.html(`${content_size}/15000 chars`);
+            }, 1000);
         }
     });
 });

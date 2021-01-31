@@ -7,7 +7,7 @@
 }
 
 #editor {
-    height: 410px;
+    height: 450px;
 }
 
 kbd{
@@ -16,12 +16,14 @@ kbd{
 
 html {
     --bg: #FCFCFC;
+    --cl: #000000;
 }
 
 
 
 body {
     background-color: var(--bg);
+    color: var(--cl);
 }
 
 .darkk input[type=checkbox] {
@@ -64,4 +66,8 @@ body {
 
 .darkk label:active:after {
     width: 45px;
+}
+
+#editor-status{
+    font-style: italic;
 }

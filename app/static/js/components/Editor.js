@@ -10,15 +10,12 @@ class Editor extends HTMLElement {
     }
 
     standardContent(){
-        return `# ===---===---===---===--- \n# title* : helloworld \n# version : 0.0.1 \n# description : Just an example of using b4sh \n# os : debian \n
-echo "Hello World from b4sh !"
+        return `#!/bin/bash \n\n# _title_ : helloworld \n# _version_ : 0.0.1 \n# _description_ : Just an example of using b4sh \n# _os_ : debian \n
+echo "Hello World !"
 
-# - Click on GENERATE button !
-# - Copy/Paste the command generated in your terminal !
-# - You can Resize this editor to add more...
-
-echo "Have FUN !" \n
-# ===---===---===---===---`
+# - The title parameter is required.
+# - Click on GENERATE and try the command in your terminal !
+# - You can Resize this editor to add more...`
     }
 
     getContent(){
@@ -43,6 +40,7 @@ echo "Have FUN !" \n
         this.innerHTML = `
             <div id="editor" class="rounded">${this.getContent()}</div>
             <div id="editor_dragbar" class="app_editor_dragbar"></div>
+            <small id="editor-status"></small>
         `;
     }
 }

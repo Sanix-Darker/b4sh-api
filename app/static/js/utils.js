@@ -1,7 +1,65 @@
+const getStyle = (element, style) =>
+  window
+    .getComputedStyle(element)
+    .getPropertyValue(style);
+
+const initialColors = {
+  bg: getStyle(html, "--bg"),
+  cl: getStyle(html, "--cl"),
+}
+
+const darkMode = {
+  bg: "#333333", // override styles here
+  cl: "#FFFFFF", // override styles here
+}
+
+const transformKey = key =>
+  "--" + key.replace(/([A-Z])/, "-$1").toLowerCase();
+
+const changeColors = (colors) => {
+  Object.keys(colors).map(key =>
+    html.style.setProperty(transformKey(key), colors[key])
+  );
+}
+
+checkbox.addEventListener("change", ({target}) => {
+    target.checked ? changeColors(darkMode) : changeColors(initialColors);
+});
+
+const isExistLocalStorage = (key) =>
+  localStorage.getItem(key) != null;
+
+const createOrEditLocalStorage = (key, value) =>
+  localStorage.setItem(key, JSON.stringify(value));
+
+const getValeuLocalStorage = (key) =>
+  JSON.parse(localStorage.getItem(key));
+
+checkbox.addEventListener("change", ({target}) => {
+  if (target.checked) {
+    changeColors(darkMode);
+    createOrEditLocalStorage('mode','darkMode');
+  } else {
+    changeColors(initialColors);
+    createOrEditLocalStorage('mode','initialColors');
+  }
+})
+
+if(!isExistLocalStorage('mode'))
+  createOrEditLocalStorage('mode', 'initialColors');
+
+if (getValeuLocalStorage('mode') === "initialColors") {
+  checkbox.removeAttribute('checked');
+  changeColors(initialColors);
+} else {
+  checkbox.setAttribute('checked', "");
+  changeColors(darkMode);
+}
+
 /**
- * 
- * @param {*} text 
- * @param {*} el 
+ *
+ * @param {*} text
+ * @param {*} el
  */
 function copyToClipboard(text, el) {
     var copyTest = document.queryCommandSupported('copy');
@@ -34,7 +92,7 @@ function initEditor(){
     editor.setTheme("ace/theme/twilight");
     editor.getSession().setMode("ace/mode/sh");
     editor.setOptions({
-        fontSize: "12pt"
+        fontSize: "10pt"
     })
     window.draggingAceEditor = {};
 
@@ -49,27 +107,6 @@ function globalInit(){
 
     // We set the host
     $("#co-input i").html(location.hostname);
-}
-
-
-/**
- * generate
- */
-function generate(){
-    $("#gen").prop('disabled', true);
-    $("#gen").html('&#x267D; LOADING...');
-
-    setTimeout(() => {
-        $("#gen").prop('disabled', false);
-        $("#gen").html('GENERATED');
-
-        setTimeout(() => {
-            $("#gen").slideUp("slow", function() {
-                $("#showc").trigger("click");
-            });
-        }, 500);
-
-    }, 2000);
 }
 
 // A digit formatter
