@@ -5,6 +5,8 @@ var generate_button = $("#gen");
 var copy_button = $("#co");
 var copy_content_button = document.querySelector("#co-input");
 
+var current_bash_id = "";
+
 var command_box = $("#command_box");
 
 // var host_api = "https://b4sh.co/api";
@@ -33,6 +35,58 @@ function get_value_from_row(row){
     return typeof value !== "undefined" ? value : "";
 }
 
+function create_bash(title, version,description, os, author, content){
+    (async () => {
+        const rawResponse = await fetch(host_api + "/b", {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title, version,
+                description, os,
+                author, content
+            })
+        });
+        const response = await rawResponse.json();
+        generate_button.html('&#x2714; GENERATED');
+
+        current_bash_id = response?.result?.bash_id;
+        // we set the keyof the commnd-box
+        copy_content_button.innerHTML = `curl -L -s ${location.origin}/b.sh | bash -s ${response?.result?.key}`;
+    })();
+}
+
+function update_bash(title, version,description, os, author, content, current_bash_id){
+    (async () => {
+        const rawResponse = await fetch(`${host_api}/b/${current_bash_id}`, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title, version,
+                description, os,
+                author, content
+            })
+        });
+
+        const response = await rawResponse.json();
+
+        if(response?.code){
+            if (response?.code == "200")
+                generate_button.html('&#x2714; UPDATED');
+            else
+                editor_status.html(`<span style="color: red;">[x] Error Updating, try again !</span>`);
+        }else{
+            editor_status.html(`<span style="color: red;">[x] Error Updating, try again !</span>`);
+        }
+    })();
+}
+
+
 /**
  * generate
  */
@@ -53,38 +107,15 @@ function generate(){
         var os = get_value_from_row(search_os?.start.row);
         var author = "- - - - - ";
 
-        (async () => {
-            const rawResponse = await fetch(host_api + "/b", {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    title, version,
-                    description, os,
-                    author, content
-                })
-            });
-            const response = await rawResponse.json();
-
-            generate_button.html('&#x2714; GENERATED');
-
-            console.log("content: ", response);
-            console.log("response?.result?.key: ", response?.result?.key)
-            // we set the keyof the commnd-box
-            copy_content_button.innerHTML = `curl -L -s ${location.origin}/b.sh | bash -s ${response?.result?.key}`;
-
-            setTimeout(() => {
-                generate_button.html('&#x27F3; GENERATE');
-            }, 2000);
-
-        })();
-
+        // if we have a b4sh-id in memory, we edit
+        if (length(current_bash_id) > 0){
+            update_bash(title, version,description, os, author, content, current_bash_id);
+        }else{// if not we create a new one
+            create_bash(title, version,description, os, author, content);
+        }
     }else{
         editor_status.html(`<span style="color: red;">[x]You need to have the _title_ attribute with a value in your editor !</span>`);
     }
-
 }
 
 
@@ -122,11 +153,10 @@ $(document).ready(function(){
         if(content_size > 15000){
             editor_status.html(`<span style="color: red;">[x] Too much characters, more than 15000 is not allowed...</span>`);
         }else{
-            if (content != editor.session.getValue()){
+            if (content != editor.session.getValue())
                 generate_button.slideDown("slow");
-            }else{
+            else
                 generate_button.slideUp("slow");
-            }
 
             content = editor.session.getValue();
             content_size = content.length;

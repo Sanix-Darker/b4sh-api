@@ -32,8 +32,11 @@ class Right extends HTMLElement {
                 <div class="tab-pane container active p-0 pl-3 pt-2" id="home">
                     <h4>
                         &#x1F589; Editor
-                        <span class="float-right">&#x2BB9;</span>
                     </h4>
+
+                    <div style="width: 100%;text-align: right;">
+                        <span class="btn btn-secondary" role="button" id="new_b4sh">New</span>
+                    </div>
 
                     <div id="editor_wrapper" class="app_editor_wrapper">
                         <div class="row">
