@@ -38,7 +38,7 @@ class About extends HTMLElement {
                 <br>
                 You just have to run this in your terminal :
                 <kbd>
-                    curl -L -s 0.0.0.0/b.sh | bash -s docker_ubuntu_1swdaad
+                    curl -L -s b4sh.co/b.sh | bash -s docker_ubuntu_1swdaad
                 </kbd>
             <hr>
 
