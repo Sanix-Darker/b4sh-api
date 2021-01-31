@@ -4,6 +4,16 @@ var editor_status = $("#editor-status");
 var generate_button = $("#gen");
 
 
+function get_range(key){
+    return editor.find(key,{
+        wrap: true,
+        caseSensitive: true,
+        wholeWord: true,
+        regExp: true,
+        preventScroll: true // do not change selection
+    });
+}
+
 /**
  * generate
  */
@@ -12,29 +22,34 @@ function generate(){
     generate_button.html('&#x267D; LOADING...');
 
     // We get the content from the editor
-    var search_title = editor.find('_title_',{
-        wrap: true,
-        caseSensitive: true,
-        wholeWord: true,
-        regExp: true,
-        preventScroll: true // do not change selection
-    });
+    var search_title = get_range('_title_');
+    var search_version = get_range('_version_');
+    var search_description = get_range('_description_');
+    var search_os = get_range('_os_');
 
     if (search_title){
+        var title = editor.getSession().getLine(search_title?.start.row).split(":")[1];
+        var version = editor.getSession().getLine(search_version?.start.row).split(":")[1];
+        var description = editor.getSession().getLine(search_description?.start.row).split(":")[1];
+        var os = editor.getSession().getLine(search_os?.start.row).split(":")[1];
+        var author = "- - - - - ";
+
+        const obj = {
+            title,
+            version,
+            description,
+            os,
+            author,
+            content
+        }
+        console.log("obj: ", obj)
 
     }else{
         editor_status.html(`<span style="color: red;">[x]You need to have the _title_ attribute with a value in your editor !</span>`);
     }
 
     setTimeout(() => {
-        generate_button.prop('disabled', false);
-        generate_button.html('GENERATED');
-
-        setTimeout(() => {
-            generate_button.slideUp("slow", function() {
- 
-            });
-        }, 500);
+        generate_button.html('&#x2714; GENERATED');
 
     }, 2000);
 }
