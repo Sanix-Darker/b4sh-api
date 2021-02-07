@@ -40,7 +40,7 @@ class Command extends HTMLElement {
                     title="Click to copy"
                     role="button"
                     style="background: white;color: black;"
-                    class="shadow-sm p-1 mt-n1 fas fa-copy float-right mr-n3">&#x1F5DE; copy</i>
+                    class="shadow-sm p-1 mt-n1 fas fa-copy float-right mr-n3">Copy</i>
             </kbd>
         `;
     }

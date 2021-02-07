@@ -1,5 +1,10 @@
 #!/bin/bash
+# The bash script that will get the key of the
+# b4sh saved to the backend and then execute it
+#
+# By github.com/sanix-darker
 
+# Global variables
 VERSION=0.0.1
 HOST="http://127.0.0.1:4352"
 
@@ -146,3 +151,4 @@ main()
 
 # We execute the main method
 main $1
+
