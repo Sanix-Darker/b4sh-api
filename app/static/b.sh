@@ -9,7 +9,7 @@
 
 # Global variables
 VERSION=0.0.1
-HOST="http://127.0.0.1:4352"
+HOST="https://b4sh.co"
 
 
 # Just a custom exit method

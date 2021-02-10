@@ -1,1 +1,2 @@
 - uncheck all when new button is clicked
+- undefined quand on check un element de la list au load de la page initiallement
