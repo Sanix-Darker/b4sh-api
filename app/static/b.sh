@@ -1,8 +1,11 @@
 #!/bin/bash
+
 # The bash script that will get the key of the
 # b4sh saved to the backend and then execute it
 #
 # By github.com/sanix-darker
+
+
 
 # Global variables
 VERSION=0.0.1
@@ -12,7 +15,7 @@ HOST="http://127.0.0.1:4352"
 # Just a custom exit method
 exit_b4sh()
 {
-    echo "[-] Thanks for using b4sh."
+    echo "[-] Thanks for using b4sh.co | v${VERSION}"
     exit 1
 }
 
@@ -66,16 +69,16 @@ check_curl()
 save()
 {
     echo $"$content" > "${key}.sh"
-    echo "[+] ${key}.sh saved locally !"
+    # echo "[+] ${key}.sh saved locally !"
 }
 
 
 # The run method with a simple eval in it
 run()
 {
-    echo "- - - - - - - - - - - - - - -"
+    echo "- - - - - - - - - - - - - - - - - - -"
     eval $"$1"
-    echo "- - - - - - - - - - - - - - -"
+    echo "- - - - - - - - - - - - - - - - - - -"
 }
 
 
@@ -87,6 +90,7 @@ check_local_execute()
     then
         echo "[?] Oh, this b4sh exist locally."
         echo -n "[?] Execute it (y/n) :"
+        local choi
 
         read choi
         if [ "$choi" == "y" ] || [ "$choi" == "yes" ] || [ "$choi" == "Y" ] || [ "$choi" == "YES" ]
@@ -119,10 +123,10 @@ get_param()
 # Our main method
 main()
 {
-    echo "[+] b4sh v_${VERSION} processing $HOST/$1..."
+    echo "[+] $HOST/api/$1..."
 
     # We check locally the sh
-    check_local_execute $1
+    # check_local_execute $1
 
     # We check if curl is present or not
     check_curl

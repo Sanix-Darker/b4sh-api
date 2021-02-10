@@ -35,6 +35,10 @@ function get_value_from_row(row){
     return typeof value !== "undefined" ? value : "";
 }
 
+function limit_print(str, limit){
+    return (str.length > limit) ? str.substring(0,limit) + "..." : str;
+}
+
 function create_bash(title, version,description, os, author, content){
     (async () => {
         const rawResponse = await fetch(host_api + "/b", {
@@ -54,7 +58,7 @@ function create_bash(title, version,description, os, author, content){
 
         current_bash_id = response?.result?.bash_id;
         // we set the keyof the commnd-box
-        copy_content_button.innerHTML = `curl -L -s ${location.origin}/b.sh | bash -s ${response?.result?.key}`;
+        copy_content_button.innerHTML = limit_print(`curl -L -s ${location.origin}/b.sh | bash -s ${response?.result?.key}`, 70);
     })();
 }
 
@@ -78,10 +82,15 @@ function update_bash(title, version,description, os, author, content, current_ba
         if(response?.code){
             if (response?.code == "200")
                 generate_button.html('&#x2714; UPDATED');
-            else
+            else{
                 editor_status.html(`<span style="color: red;">[x] Error Updating, try again later !</span>`);
+                generate_button.prop('disabled', false);
+                generate_button.html('&#x27F3; GENERATE');
+            }
         }else{
             editor_status.html(`<span style="color: red;">[x] Error Updating, try again later !</span>`);
+            generate_button.prop('disabled', false);
+            generate_button.html('&#x27F3; GENERATE');
         }
     })();
 }
@@ -115,6 +124,8 @@ function generate(){
         }
     }else{
         editor_status.html(`<span style="color: red;">[x]You need to have the _title_ attribute with a value in your editor !</span>`);
+        generate_button.prop('disabled', false);
+        generate_button.html('&#x27F3; GENERATE');
     }
 }
 
@@ -140,8 +151,14 @@ $(document).ready(function(){
     content_size = content.length;
     editor_status.html(`${content_size}/15000 chars`);
 
-
     $("#count_all").html(nFormatter(135004));
+
+    $("#new_b4sh").click(function() {
+        editor.session.setValue(`#!/bin/bash\n\n# _title_: my-title-here\n\n`);
+        current_bash_id = "";
+        $("#list-tags").html("");
+        copy_content_button.innerHTML = "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+    });
 
     // A security check for too much characters
     // of bash code

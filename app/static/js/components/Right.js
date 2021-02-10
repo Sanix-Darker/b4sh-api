@@ -35,12 +35,12 @@ class Right extends HTMLElement {
                     </h4>
 
                     <div style="width: 100%;text-align: right;">
-                        <span class="btn btn-secondary" role="button" id="new_b4sh">New</span>
+                        <span class="btn btn-secondary" role="button" id="new_b4sh">New b4sh</span>
                     </div>
 
                     <div id="editor_wrapper" class="app_editor_wrapper">
                         <div class="row">
-                            <div class="col-2 border p-0" style="max-height: 400px; overflow: auto;">
+                            <div class="col-2 border p-0" id="list-tags" style="max-height: 400px; overflow: auto;">
                                 <!-- A web component for listing tags -->
                                 <w-tags tags="HelloWorld"></w-tags>
                                 <!-- A web component for listing tags -->

@@ -11,11 +11,14 @@ class Editor extends HTMLElement {
 
     standardContent(){
         return `#!/bin/bash\n\n# _title_ : helloworld \n
-echo "Hello World !"
+echo "Hello World ʕ·͡ᴥ·ʔ !"
 
-# - Update this script and click on  GENERATE !
+# - Update this script and click on GENERATE !
 # - Copy/Paste the generated command in your terminal.
-# - You can Resize this editor to add more...\n`
+# - Click 'New b4sh' button TOP-RIGHT to empty the Editor.
+
+# - You can Resize this editor to add more...
+`
     }
 
     getContent(){
