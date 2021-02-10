@@ -15,10 +15,13 @@ class ListElements extends HTMLElement {
             });
 
             const response = await rawResponse.json();
-            this.innerHTML = `<div class="list-group " id="list_elements" style="overflow: auto;display: block;">`;
+
+            this.innerHTML = `<div class="list-group " id="list_elements" style="overflow: auto;display: block;">Loading...</div>`;
 
             if(response?.code){
                 if (response?.code == "200"){
+                    this.innerHTML = `<div class="list-group " id="list_elements" style="overflow: auto;display: block;">`;
+
                     response?.result.sort(function(a, b){ return b.stats.used_count - a.stats.used_count}).forEach((el) => {
                         this.innerHTML += `
                         <w-el
@@ -33,6 +36,10 @@ class ListElements extends HTMLElement {
                     });
                     this.innerHTML += "</div>";
                 }
+            }
+
+            if(response?.result.length == 0){
+                this.innerHTML = `<div class="list-group" id="list_elements" style="overflow: auto;display: block;">Empty zone for now...</div>`;
             }
         })();
 
