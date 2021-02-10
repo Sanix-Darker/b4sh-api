@@ -8,7 +8,6 @@ var copy_content_button = document.querySelector("#co-input");
 var current_bash_id = "";
 
 var command_box = $("#command_box");
-
 var tags = []
 
 
@@ -175,6 +174,7 @@ $("#search_text").keyup(async function(){
                     content = "${el.content}"
                     hash = "${el.hash}"
                     date = "${el.date}"
+                    checked = "${tags.indexOf(el.key) !== -1 ? "on": "off"}"
                     author = "${el?.author}"
                     used_count = "${el.stats.used_count}" version = "${el?.version}"
                     os = "${el?.os}"></w-el>`

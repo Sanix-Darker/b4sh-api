@@ -37,7 +37,7 @@ class Element extends HTMLElement {
             <label class="form-check-label style="background: 0;width: -webkit-fill-available;width: -moz-available;">
                 <li role='button' class="list-group-item d-flex justify-content-between align-items-center" style="padding-left: 30px;background: 0;">
                     <div id="b_elt${this.getThis("hash")}" style="display:none;">${this.getThis("content")}</div>
-                    <input class="form-check-input b_elt" onchange="get_elt('${this.getThis("title")}', '${this.getThis("hash")}')" id="${this.getThis("hash")}" type="checkbox">
+                    <input class="form-check-input b_elt" ${this.getThis("checked") == "on" ? "checked=''": ""} onchange="get_elt('${this.getThis("title")}', '${this.getThis("hash")}')" id="${this.getThis("hash")}" type="checkbox">
                     <span data-toggle="tooltip"
                         data-placement="top"
                         title="author: ${this.getThis("author")} | version: ${this.getThis("version")} | OS: ${this.getThis("os")}"
