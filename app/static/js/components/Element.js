@@ -12,7 +12,7 @@ class Element extends HTMLElement {
         if(this.hasAttribute(attr)){
             return this.getAttribute(attr)
         }else{
-            console.log(attr + "not available...")
+            // console.log(attr + "not available...")
             return ""
         }
     }
