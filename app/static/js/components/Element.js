@@ -24,11 +24,6 @@ class Element extends HTMLElement {
     constructor(){
         super();
 
-        // Setup a click listener on <app-drawer> itself.
-        this.addEventListener('click', e => {
-          this.logMe();
-        });
-
         this.innerHTML = `
             <label class="form-check-label" style="background: 0;width: -webkit-fill-available;width: -moz-available;">
                 <li role='button' class="list-group-item d-flex justify-content-between align-items-center" style="padding-left: 30px;background: 0;">

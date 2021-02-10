@@ -38,11 +38,6 @@ echo "Hello World ʕ·͡ᴥ·ʔ !"
     constructor(){
         super();
 
-        // Setup a click listener on <app-drawer> itself.
-        this.addEventListener('click', e => {
-          this.logMe();
-        });
-
         this.innerHTML = `
             <div id="editor" class="rounded">${this.getContent()}</div>
             <div id="editor_dragbar" class="app_editor_dragbar"></div>

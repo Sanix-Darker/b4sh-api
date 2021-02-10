@@ -20,11 +20,6 @@ class Command extends HTMLElement {
     constructor(){
         super();
 
-        // Setup a click listener on <app-drawer> itself.
-        this.addEventListener('click', e => {
-          this.logMe();
-        });
-
         this.innerHTML = `
             <kbd class="shadow-sm">
                 <small id="co-input">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </small>

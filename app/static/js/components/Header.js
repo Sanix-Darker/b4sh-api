@@ -8,11 +8,6 @@ class Header extends HTMLElement {
     constructor(){
         super();
 
-        // Setup a click listener on <app-drawer> itself.
-        this.addEventListener('click', e => {
-          this.logMe();
-        });
-
         this.innerHTML = `
             <nav class="navbar bg-dark navbar-dark">
                 <!-- Brand -->

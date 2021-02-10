@@ -9,11 +9,6 @@ class ListElements extends HTMLElement {
     constructor(){
         super();
 
-        // Setup a click listener on <app-drawer> itself.
-        this.addEventListener('click', e => {
-          this.logMe();
-        });
-
         (async () => {
             const rawResponse = await fetch(`${host_api}/b`, {
                 method: 'GET'

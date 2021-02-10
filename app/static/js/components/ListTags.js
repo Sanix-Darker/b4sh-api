@@ -15,11 +15,6 @@ class ListTags extends HTMLElement {
     constructor(){
         super();
 
-        // Setup a click listener on <app-drawer> itself.
-        this.addEventListener('click', e => {
-          this.logMe();
-        });
-
         this.getElements().forEach((elt, index) => {
             if (elt.length > 1){
                 this.innerHTML += `

@@ -9,11 +9,6 @@ class Left extends HTMLElement {
     constructor(){
         super();
 
-        // Setup a click listener on <app-drawer> itself.
-        this.addEventListener('click', e => {
-          this.logMe();
-        });
-
         this.innerHTML = `
             <!-- Web component for filters -->
             <w-filters></w-filters>
