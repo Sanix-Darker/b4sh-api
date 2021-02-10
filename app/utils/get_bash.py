@@ -84,6 +84,17 @@ def find_b4sh(string: str, password, size_num=10, limit_num=10) -> dict:
     }
 
 
+def count_all():
+    """
+    This method will just count all available b4sh in the system
+    """
+
+    return {
+        "code": "200",
+        "result": Bash().count({})
+    }
+
+
 def remove_id(elt: dict) -> dict:
     """
 

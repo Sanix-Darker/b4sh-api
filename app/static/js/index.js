@@ -168,7 +168,13 @@ $(document).ready(function(){
     content_size = content.length;
     editor_status.html(`${content_size}/15000 chars`);
 
-    $("#count_all").html(nFormatter(135004));
+    (async () => {
+        const rawResponse = await fetch(`${host_api}/b/count`, {
+            method: 'GET'
+        });
+        const response = await rawResponse.json();
+        $("#count_all").html(nFormatter(parseInt(response?.result)));
+    })();
 
     $("#new_b4sh").click(function() {
         editor.session.setValue(`#!/bin/bash\n\n# _title_: my-title-here\n\n`);

@@ -90,43 +90,58 @@ def _get_update_delete(bash_id):
 
 
 # /api/bash/raw/key
-@app.route('/api/b/r/<key>', methods=['GET'])
+# @app.route('/api/b/r/<key>', methods=['GET'])
+# @cross_origin(supports_credentials=True)
+# def _run(key):
+#     try:
+#         result = get_content_by_key(key)
+#     except Exception as es:
+#         get_trace()
+#         result = {
+#             "code": "500",
+#             "reason": "An error occur, please check logs!"
+#         }
+
+#     return result, result["code"]
+
+
+# # /api/bash/up-vote/key
+# @app.route('/api/b/up/<key>', methods=['PATCH'])
+# @cross_origin(supports_credentials=True)
+# def _up(key):
+#     try:
+#         result = up_vote(key)
+#     except Exception as es:
+#         get_trace()
+#         result = {
+#             "code": "500",
+#             "reason": "An error occur, please check logs!"
+#         }
+
+#     return result, result["code"]
+
+
+# # /api/bash/down-vote/key
+# @app.route('/api/b/down/<key>', methods=['PATCH'])
+# @cross_origin(supports_credentials=True)
+# def _down(key):
+#     try:
+#         result = down_vote(key)
+#     except Exception as es:
+#         get_trace()
+#         result = {
+#             "code": "500",
+#             "reason": "An error occur, please check logs!"
+#         }
+
+#     return result, result["code"]
+
+# /api/bash/count
+@app.route('/api/b/count', methods=['GET'])
 @cross_origin(supports_credentials=True)
-def _run(key):
+def _count():
     try:
-        result = get_content_by_key(key)
-    except Exception as es:
-        get_trace()
-        result = {
-            "code": "500",
-            "reason": "An error occur, please check logs!"
-        }
-
-    return result, result["code"]
-
-
-# /api/bash/up-vote/key
-@app.route('/api/b/up/<key>', methods=['PATCH'])
-@cross_origin(supports_credentials=True)
-def _up(key):
-    try:
-        result = up_vote(key)
-    except Exception as es:
-        get_trace()
-        result = {
-            "code": "500",
-            "reason": "An error occur, please check logs!"
-        }
-
-    return result, result["code"]
-
-
-# /api/bash/down-vote/key
-@app.route('/api/b/down/<key>', methods=['PATCH'])
-@cross_origin(supports_credentials=True)
-def _down(key):
-    try:
-        result = down_vote(key)
+        result = count_all()
     except Exception as es:
         get_trace()
         result = {

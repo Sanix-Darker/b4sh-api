@@ -21,7 +21,8 @@ from app.utils.get_bash import (
     get_all_publics_bash,
     get_all_private_bash,
     get_content_by_key,
-    find_b4sh
+    find_b4sh,
+    count_all
 )
 from app.utils.update_bash import (
     update_bash,
