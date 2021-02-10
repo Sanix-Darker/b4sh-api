@@ -5,17 +5,8 @@
  */
 class About extends HTMLElement {
 
-    logMe(){
-        // console.log("Clicked !");
-    }
-
     constructor(){
         super();
-
-        // Setup a click listener on <app-drawer> itself.
-        this.addEventListener('click', e => {
-          this.logMe();
-        });
 
         this.innerHTML = `
             <a href="https://github.com/Sanix-Darker/b4sh-api" target="_blank">b4sh</a> is an OpenSource project,

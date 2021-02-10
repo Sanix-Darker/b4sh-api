@@ -6,10 +6,6 @@
  */
 class Left extends HTMLElement {
 
-    logMe(){
-        // console.log("Clicked !");
-    }
-
     constructor(){
         super();
 

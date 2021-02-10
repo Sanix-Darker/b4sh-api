@@ -17,10 +17,6 @@ class Command extends HTMLElement {
         }
     }
 
-    logMe(){
-        // console.log("Clicked !");
-    }
-
     constructor(){
         super();
 

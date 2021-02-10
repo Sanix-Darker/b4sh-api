@@ -5,10 +5,6 @@
  */
 class Row extends HTMLElement {
 
-    logMe(){
-        // console.log("Clicked !");
-    }
-
     /**
      * Getters and Setters
     */
@@ -23,11 +19,6 @@ class Row extends HTMLElement {
 
     constructor(){
         super();
-
-        // Setup a click listener on <app-drawer> itself.
-        this.addEventListener('click', e => {
-          this.logMe();
-        });
 
         this.innerHTML = `
             <tr>

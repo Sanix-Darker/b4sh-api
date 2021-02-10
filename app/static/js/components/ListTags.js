@@ -5,10 +5,6 @@
  */
 class ListTags extends HTMLElement {
 
-    logMe(){
-        // console.log("Clicked !");
-    }
-
     getElements(){
         if (this.hasAttribute("tags")){
             return this.getAttribute("tags").split(",");

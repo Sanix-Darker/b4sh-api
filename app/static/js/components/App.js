@@ -5,17 +5,8 @@
  */
 class App extends HTMLElement {
 
-    logMe(){
-        // console.log("Clicked !");
-    }
-
     constructor(){
         super();
-
-        // Setup a click listener on <app-drawer> itself.
-        this.addEventListener('click', e => {
-          this.logMe();
-        });
 
         this.innerHTML = `
             <!-- Web component For my Header -->

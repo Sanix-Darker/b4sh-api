@@ -6,10 +6,6 @@
 
 class ListElements extends HTMLElement {
 
-    logMe(){
-        // console.log("Clicked !");
-    }
-
     constructor(){
         super();
 

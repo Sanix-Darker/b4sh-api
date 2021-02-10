@@ -5,10 +5,6 @@
  */
 class Editor extends HTMLElement {
 
-    logMe(){
-        // console.log("Clicked !");
-    }
-
     standardContent(){
         return `#!/bin/bash\n\n
 # _title_ : hello-world

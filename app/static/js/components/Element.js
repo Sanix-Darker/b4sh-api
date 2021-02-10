@@ -17,10 +17,6 @@ class Element extends HTMLElement {
         }
     }
 
-    logMe(){
-        // console.log("Clicked !");
-    }
-
     limit_print(str, limit){
         return (str.length > limit) ? str.substring(0,limit) + "..." : str;
     }
