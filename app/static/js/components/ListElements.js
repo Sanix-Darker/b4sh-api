@@ -31,7 +31,7 @@ class ListElements extends HTMLElement {
                     response?.result.sort(function(a, b){ return b.stats.used_count - a.stats.used_count}).forEach((el) => {
                         this.innerHTML += `
                         <w-el
-                            id = "b_${el.hash}" title = "${el.title}"
+                            id = "b_${el.hash}" title = "${el.key}"
                             content = "${el.content}"
                             hash = "${el.hash}"
                             date = "${el.date}"

@@ -21,6 +21,10 @@ class Element extends HTMLElement {
         // console.log("Clicked !");
     }
 
+    limit_print(str, limit){
+        return (str.length > limit) ? str.substring(0,limit) + "..." : str;
+    }
+
     constructor(){
         super();
 
@@ -36,7 +40,7 @@ class Element extends HTMLElement {
                     <span data-toggle="tooltip"
                         data-placement="top"
                         title="author: ${this.getThis("author")} | version: ${this.getThis("version")} | OS: ${this.getThis("os")}"
-                        class="mt-1" style="font-size: 15px;">${this.getThis("title")}</span>
+                        class="mt-1" style="font-size: 15px;">${this.limit_print(this.getThis("title"), 20)}</span>
                     <span class="badge badge-secondary badge-pill">${this.getThis("used_count")}</span>
                 </li>
             </label>
