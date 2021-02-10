@@ -30,19 +30,18 @@ class Right extends HTMLElement {
 
             <div class="tab-content">
                 <div class="tab-pane container active p-0 pl-3 pt-2" id="home">
-                    <h4>
-                        &#x1F589; Editor
-                    </h4>
-
-                    <div style="width: 100%;text-align: right;">
-                        <span class="btn btn-secondary" role="button" id="new_b4sh">New b4sh</span>
+                    <div style="text-align: left;" class="col">
+                        <b id="b4sh-id"></b>
+                    </div>
+                    <div style="text-align: right;" class="col">
+                        <span class="btn btn-secondary" role="button" style="display: inline!important;" id="new_b4sh">New b4sh</span>
                     </div>
 
                     <div id="editor_wrapper" class="app_editor_wrapper">
                         <div class="row">
-                            <div class="col-2 border p-0" id="list-tags" style="max-height: 400px; overflow: auto;">
+                            <div class="col-2 border p-0" id="list-tags">
                                 <!-- A web component for listing tags -->
-                                <w-tags tags="HelloWorld"></w-tags>
+                                <w-tags tags=""></w-tags>
                                 <!-- A web component for listing tags -->
                             </div>
                             <div class="col">
@@ -50,7 +49,7 @@ class Right extends HTMLElement {
                                 <w-editor content=""></w-editor>
                                 <!-- Web component for the Editor (&#13; is for a new line)-->
 
-                                <div class="row pb-5 pt-3">
+                                <div class="row pt-3">
                                     <div class="col-9 pt-1">
                                         <!-- The web component for the compressed command -->
                                         <w-command id="command_box" key="hello_world_234dde"></w-command>
@@ -62,7 +61,7 @@ class Right extends HTMLElement {
                                         </button>
                                     </div>
                                 </div>
-
+                                <hr>
                             </div>
                         </div>
                     </div>

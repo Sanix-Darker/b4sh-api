@@ -25,7 +25,7 @@ class Header extends HTMLElement {
                     <div class="toggle float-right darkk">
                         <input id="switch" class="theme" type="checkbox" name="theme">
                         <label for="switch">Toggle</label>
-                    </div>
+                        <span id="d-logo"></span>
                 </div>
             </nav>
         `;

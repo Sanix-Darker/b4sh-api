@@ -35,7 +35,7 @@ class Element extends HTMLElement {
                     <input class="form-check-input" id="${this.getThis("id")}" type="checkbox">
                     <span data-toggle="tooltip"
                         data-placement="top"
-                        title="${this.getThis("version")} | ${this.getThis("os")}"
+                        title="author: ${this.getThis("author")} | version: ${this.getThis("version")} | OS: ${this.getThis("os")}"
                         class="mt-1" style="font-size: 15px;">${this.getThis("title")}</span>
                     <span class="badge badge-secondary badge-pill">${this.getThis("used_count")}</span>
                 </li>

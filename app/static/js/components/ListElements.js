@@ -4,98 +4,12 @@
  * author : s@n1x-d4rk3r
  */
 
+var host_api = "http://127.0.0.1:4352/api";
+
 class ListElements extends HTMLElement {
 
     logMe(){
         // console.log("Clicked !");
-    }
-
-    getElements(){
-        return [
-            {
-                "id": "apache2_debian_46487",
-                "title": "&#x66D; Apache2 debian",
-                "content": "echo 'Test !'",
-                "hash": "f1899d142cb91ed98058d1f3",
-                "author": "d4rk3r",
-                "date": "2020-12-07 16:56:44.931259",
-                "used_count": 13,
-                "version": "0.0.3",
-                "os": "Debian or Ubuntu"
-            },
-            {
-                "id": "Other_stuff_46487",
-                "title": "Nyama stuff",
-                "content": "echo 'Others !'",
-                "hash": "10jdje44tddssskodkendnns",
-                "author": "markof",
-                "date": "2020-12-07 16:56:44.931259",
-                "used_count": 7,
-                "version": "0.2.0",
-                "os": "Fedora"
-            },            {
-                "id": "apache2_debian_46487",
-                "title": "Apache2 debian",
-                "content": "echo 'Test !'",
-                "hash": "f1899d142cb91ed98058d1f3",
-                "author": "d4rk3r",
-                "date": "2020-12-07 16:56:44.931259",
-                "used_count": 13,
-                "version": "0.0.3",
-                "os": "Debian or Ubuntu"
-            },
-            {
-                "id": "Other_stuff_46487",
-                "title": "&#x66D; Nyama stuff*",
-                "content": "echo 'Others !'",
-                "hash": "10jdje44tddssskodkendnns",
-                "author": "markof",
-                "date": "2020-12-07 16:56:44.931259",
-                "used_count": 7,
-                "version": "0.2.0",
-                "os": "Fedora"
-            },            {
-                "id": "apache2_debian_46487",
-                "title": "Apache2 debian",
-                "content": "echo 'Test !'",
-                "hash": "f1899d142cb91ed98058d1f3",
-                "author": "d4rk3r",
-                "date": "2020-12-07 16:56:44.931259",
-                "used_count": 13,
-                "version": "0.0.3",
-                "os": "Debian or Ubuntu"
-            },            {
-                "id": "apache2_debian_46487",
-                "title": "Apache2 debian",
-                "content": "echo 'Test !'",
-                "hash": "f1899d142cb91ed98058d1f3",
-                "author": "d4rk3r",
-                "date": "2020-12-07 16:56:44.931259",
-                "used_count": 13,
-                "version": "0.0.3",
-                "os": "Debian or Ubuntu"
-            },            {
-                "id": "apache2_debian_46487",
-                "title": "Apache2 debian",
-                "content": "echo 'Test !'",
-                "hash": "f1899d142cb91ed98058d1f3",
-                "author": "d4rk3r",
-                "date": "2020-12-07 16:56:44.931259",
-                "used_count": 13,
-                "version": "0.0.3",
-                "os": "Debian or Ubuntu"
-            },            {
-                "id": "apache2_debian_46487",
-                "title": "Apache2 debian",
-                "content": "echo 'Test !'",
-                "hash": "f1899d142cb91ed98058d1f3",
-                "author": "d4rk3r",
-                "date": "2020-12-07 16:56:44.931259",
-                "used_count": 13,
-                "version": "0.0.3",
-                "os": "Debian or Ubuntu"
-            }
-        ]
     }
 
     constructor(){
@@ -106,22 +20,32 @@ class ListElements extends HTMLElement {
           this.logMe();
         });
 
-        this.innerHTML = `
-            <div class="list-group " id="list_elements" style="max-height: 2px;overflow: auto;display: block;">
-        `;
+        (async () => {
+            const rawResponse = await fetch(`${host_api}/b`, {
+                method: 'GET'
+            });
 
-        this.getElements().forEach((el) => {
-            this.innerHTML += `
-            <w-el
-                id = "${el.id}" title = "${el.title}"
-                content = "${el.content}"
-                hash = "${el.hash}"
-                date = "${el.date}"
-                author = "${el.author}"
-                used_count = "${el.used_count}" version = "${el.version}"
-                os = "${el.os}"></w-el>`
-        });
-        this.innerHTML += "</div>";
+            const response = await rawResponse.json();
+            this.innerHTML = `<div class="list-group " id="list_elements" style="overflow: auto;display: block;">`;
+
+            if(response?.code){
+                if (response?.code == "200"){
+                    response?.result.sort(function(a, b){ return b.stats.used_count - a.stats.used_count}).forEach((el) => {
+                        this.innerHTML += `
+                        <w-el
+                            id = "b_${el.hash}" title = "${el.title}"
+                            content = "${el.content}"
+                            hash = "${el.hash}"
+                            date = "${el.date}"
+                            author = "${el?.author}"
+                            used_count = "${el.stats.used_count}" version = "${el?.version}"
+                            os = "${el?.os}"></w-el>`
+                    });
+                    this.innerHTML += "</div>";
+                }
+            }
+        })();
+
     }
 }
 window.customElements.define('w-list-el', ListElements);

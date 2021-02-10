@@ -10,9 +10,17 @@ class Editor extends HTMLElement {
     }
 
     standardContent(){
-        return `#!/bin/bash\n\n# _title_ : helloworld \n
+        return `#!/bin/bash\n\n
+# _title_ : hello-world
+# _state_ : public
+# _version_ : 0.0.1
+# _description_ : To install Docker in ubuntu
+# _os_ : ubuntu
+
+
 echo "Hello World ʕ·͡ᴥ·ʔ !"
 
+# - 'title' parameter is required
 # - Update this script and click on GENERATE !
 # - Copy/Paste the generated command in your terminal.
 # - Click 'New b4sh' button TOP-RIGHT to empty the Editor.

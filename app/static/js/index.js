@@ -57,6 +57,7 @@ function create_bash(title, version,description, os, author, content){
         generate_button.html('&#x2714; GENERATED');
 
         current_bash_id = response?.result?.bash_id;
+        $("#b4sh-id").text(current_bash_id);
         // we set the keyof the commnd-box
         copy_content_button.innerHTML = limit_print(`curl -L -s ${location.origin}/b.sh | bash -s ${response?.result?.key}`, 70);
     })();
@@ -131,6 +132,7 @@ function generate(){
 
 
 $(document).ready(function(){
+    $("#list-tags").hide();
     // Global initialisations
     globalInit();
 
@@ -157,6 +159,9 @@ $(document).ready(function(){
         editor.session.setValue(`#!/bin/bash\n\n# _title_: my-title-here\n\n`);
         current_bash_id = "";
         $("#list-tags").html("");
+        $("#b4sh-id").text("");
+        $("#list-tags").hide();
+        editor.getSession().resize();
         copy_content_button.innerHTML = "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
     });
 

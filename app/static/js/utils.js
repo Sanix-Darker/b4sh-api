@@ -40,6 +40,8 @@ checkbox.addEventListener("change", ({target}) => {
         search_text.attr("style", "color: black; background: white;");
         filter_select.attr("style", "color: black; background: white;");
     }
+    d_logo(target.checked);
+
 });
 
 const isExistLocalStorage = (key) =>
@@ -101,6 +103,10 @@ function copyToClipboard(text, el) {
     }
 }
 
+function d_logo(night){
+  $("#d-logo").html(night ? "🌜" : "☀");
+}
+
 /**
  * dark_white_theme_init
  */
@@ -116,6 +122,7 @@ function dark_white_theme_init(){
         search_text.attr("style", "color: #495057; background: white;");
         filter_select.attr("style", "color: #495057; background: white;");
     }
+    d_logo(checkbox.checked);
 }
 
 /**
@@ -125,7 +132,7 @@ function initEditor(){
 
     editor.getSession().setMode("ace/mode/sh");
     editor.setOptions({
-        fontSize: "11pt"
+        fontSize: "10pt"
     })
     window.draggingAceEditor = {};
 

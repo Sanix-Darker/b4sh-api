@@ -7,11 +7,25 @@
 }
 
 #editor {
-    height: 450px;
+    height: 526px;
+}
+
+#d-logo{
+    font-size: 27px;
+    display: inline-block;
+    color: white;
+    margin-top: -5px;
 }
 
 kbd{
     display: block;
+}
+
+#list-tags{
+    height: -webkit-fill-available;
+    height: -moz-fill-available;
+    max-height: 400px;
+    overflow: auto;
 }
 
 html {

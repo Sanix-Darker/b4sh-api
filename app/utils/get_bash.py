@@ -93,6 +93,11 @@ def remove_id(elt: dict) -> dict:
     return dell("_id", elt)
 
 
+def remove_b4shid(elt: dict):
+
+    return dell("bash_id", elt)
+
+
 def get_all_publics_bash(size_num=20, limit_num=10) -> dict:
     """
     A simple method to get all public b4sh
@@ -100,9 +105,9 @@ def get_all_publics_bash(size_num=20, limit_num=10) -> dict:
     """
     # we map all over the lit of the cursosr to remove
     # the objecId none serializable object
-    result = list(map(remove_id, list(Bash().find_by({
+    result = list(map(remove_id, map(remove_b4shid, list(Bash().find_by({
         "password": None
-    }))))
+    })))))
 
     return {
         "code": "200",

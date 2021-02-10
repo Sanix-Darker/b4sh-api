@@ -24,8 +24,9 @@ class Left extends HTMLElement {
             <!-- Web component for filters -->
 
             <!-- Web component to list my elements -->
-            <w-list-el style="max-height: 370px;overflow: auto;display: block;"></w-list-el>
+            <w-list-el style="max-height: 514px;overflow: auto;display: block;"></w-list-el>
             <!-- Web component to list my elements -->
+            <br>
             <small class="badge badge-default badge-pill" style="font-style: italic"> <b id="count_all"></b> b4sh(s)</small>
             <hr>
             <div class="row">
@@ -35,6 +36,7 @@ class Left extends HTMLElement {
                     </span>
                 </div>
             </div>
+            <hr>
         `;
     }
 }
