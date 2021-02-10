@@ -145,6 +145,46 @@ function generate(){
     }
 }
 
+$("#new_b4sh").click(function() {
+    editor.session.setValue(`#!/bin/bash\n\n# _title_: my-title-here\n\n`);
+    current_bash_id = "";
+    $("#list-tags").html("");
+    $("#b4sh-id").text("");
+    $("#list-tags").hide();
+    editor.resize();
+    copy_content_button.innerHTML = "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+});
+
+$("#search_text").keyup(async function(){
+
+    console.log("target.value: ", this.value)
+
+    const rawResponse = await fetch(`${host_api}/b/find?q=${this.value}`, {
+        method: 'GET'
+    });
+    const response = await rawResponse.json();
+
+    document.querySelector("#listt").innerHTML = `<div class="list-group " id="list_elements" style="overflow: auto;display: block;">`;
+    if(response?.code){
+        if (response?.code == "200"){
+            response?.result.sort(function(a, b){ return b.stats.used_count - a.stats.used_count}).forEach((el) => {
+                document.querySelector("#listt").innerHTML += `
+                <w-el
+                    id = "b_${el.hash}" title = "${el.key}"
+                    content = "${el.content}"
+                    hash = "${el.hash}"
+                    date = "${el.date}"
+                    author = "${el?.author}"
+                    used_count = "${el.stats.used_count}" version = "${el?.version}"
+                    os = "${el?.os}"></w-el>`
+            });
+            document.querySelector("#listt").innerHTML += "</div>";
+        }
+    }
+
+    $("#count_all").html(nFormatter(response?.result.length));
+
+});
 
 $(document).ready(function(){
     $("#list-tags").hide();
@@ -168,23 +208,8 @@ $(document).ready(function(){
     content_size = content.length;
     editor_status.html(`${content_size}/15000 chars`);
 
-    (async () => {
-        const rawResponse = await fetch(`${host_api}/b/count`, {
-            method: 'GET'
-        });
-        const response = await rawResponse.json();
-        $("#count_all").html(nFormatter(parseInt(response?.result)));
-    })();
-
-    $("#new_b4sh").click(function() {
-        editor.session.setValue(`#!/bin/bash\n\n# _title_: my-title-here\n\n`);
-        current_bash_id = "";
-        $("#list-tags").html("");
-        $("#b4sh-id").text("");
-        $("#list-tags").hide();
-        editor.resize();
-        copy_content_button.innerHTML = "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
-    });
+    // The count
+    refresh_count();
 
     // A security check for too much characters
     // of bash code

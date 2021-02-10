@@ -171,3 +171,12 @@ function nFormatter(num, digits=1) {
 }
 
 
+function refresh_count(){
+  (async () => {
+    const rawResponse = await fetch(`${host_api}/b/count`, {
+        method: 'GET'
+    });
+    const response = await rawResponse.json();
+    $("#count_all").html(nFormatter(parseInt(response?.result)));
+  })();
+}

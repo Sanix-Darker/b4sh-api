@@ -54,9 +54,7 @@ def remove_elts(elt, array: list):
 
 def remove_for_find(elt):
     return remove_elts(
-            elt, ["_id", "author","title","bash_id","hash",
-                           "content","description","date","stats","history",
-                           "password"]
+            elt, ["_id", "bash_id", "password"]
     )
 
 
@@ -72,11 +70,11 @@ def find_b4sh(string: str, password, size_num=10, limit_num=10) -> dict:
         result = list(map(remove_for_find, list(Bash().collection.find({
             "title": {'$regex': string},
             "password": password
-        }, {"key": 1}))))
+        }))))
     else:
         result = list(map(remove_for_find, list(Bash().collection.find({
             "title": {'$regex': string}
-        }, {"key": 1}))))
+        }))))
 
     return {
         "code": "200",

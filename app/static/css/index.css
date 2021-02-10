@@ -17,6 +17,13 @@
     margin-top: -5px;
 }
 
+#listt{
+    max-height: 514px;
+    overflow: auto;
+    display: block;
+    overflow-x: hidden;
+}
+
 kbd{
     display: block;
 }
