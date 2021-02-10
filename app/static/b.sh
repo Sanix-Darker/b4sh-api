@@ -89,7 +89,7 @@ check_local_execute()
         echo -n "[?] Execute it (y/n) :"
 
         read choi
-        if [ $choi == "y" ] || [ $choi == "yes" ] || [ $choi == "Y" ] || [ $choi == "YES" ]
+        if [ "$choi" == "y" ] || [ "$choi" == "yes" ] || [ "$choi" == "Y" ] || [ "$choi" == "YES" ]
         then
             echo "[-] Executing the local version..."
 

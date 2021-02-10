@@ -79,9 +79,9 @@ function update_bash(title, version,description, os, author, content, current_ba
             if (response?.code == "200")
                 generate_button.html('&#x2714; UPDATED');
             else
-                editor_status.html(`<span style="color: red;">[x] Error Updating, try again !</span>`);
+                editor_status.html(`<span style="color: red;">[x] Error Updating, try again later !</span>`);
         }else{
-            editor_status.html(`<span style="color: red;">[x] Error Updating, try again !</span>`);
+            editor_status.html(`<span style="color: red;">[x] Error Updating, try again later !</span>`);
         }
     })();
 }
@@ -108,7 +108,7 @@ function generate(){
         var author = "- - - - - ";
 
         // if we have a b4sh-id in memory, we edit
-        if (length(current_bash_id) > 0){
+        if (current_bash_id.length > 0){
             update_bash(title, version,description, os, author, content, current_bash_id);
         }else{// if not we create a new one
             create_bash(title, version,description, os, author, content);
@@ -149,6 +149,8 @@ $(document).ready(function(){
         generate_button.prop('disabled', false);
         // console.log("elt: ", elt);
         editor_status.html(`Writing...`);
+
+        generate_button.html('&#x27F3; GENERATE');
 
         if(content_size > 15000){
             editor_status.html(`<span style="color: red;">[x] Too much characters, more than 15000 is not allowed...</span>`);
