@@ -36,6 +36,17 @@ function limit_print(str, limit){
     return (str.length > limit) ? str.substring(0,limit) + "..." : str;
 }
 
+function error_msg(state, response){
+    if(state == "create"){
+        editor_status.html(`<span style="color: red;">[x] Error Creating, try again later !</span>`);
+    }else{
+        editor_status.html(`<span style="color: red;">[x] Error Updating, try again later !</span>`);
+    }
+    copy_content_button.innerHTML = limit_print(typeof response?.reason == "undefined" ? "": "# " + response?.reason + "<br># " + copy_content_button.innerHTML, 70);
+    generate_button.prop('disabled', false);
+    generate_button.html('&#x27F3; GENERATE');
+}
+
 function create_bash(title, version,description, os, author, content){
     (async () => {
         const rawResponse = await fetch(host_api + "/b", {
@@ -51,12 +62,22 @@ function create_bash(title, version,description, os, author, content){
             })
         });
         const response = await rawResponse.json();
-        generate_button.html('&#x2714; GENERATED');
 
-        current_bash_id = response?.result?.bash_id;
-        $("#b4sh-id").text(current_bash_id);
-        // we set the keyof the commnd-box
-        copy_content_button.innerHTML = limit_print(`curl -L -s ${location.origin}/b.sh | bash -s ${response?.result?.key}`, 70);
+        if(response?.code){
+            if (response?.code == "200" || response?.code == "201"){
+                generate_button.html('&#x2714; GENERATED');
+
+                current_bash_id = response?.result?.bash_id;
+                $("#b4sh-id").text(current_bash_id);
+                // we set the keyof the commnd-box
+                copy_content_button.innerHTML = limit_print(`curl -L -s ${location.origin}/b.sh | bash -s ${response?.result?.key}`, 67);
+            }else{
+                error_msg("create", response);
+            }
+        }else{
+            error_msg("create", response);
+        }
+
     })();
 }
 
@@ -78,17 +99,14 @@ function update_bash(title, version,description, os, author, content, current_ba
         const response = await rawResponse.json();
 
         if(response?.code){
-            if (response?.code == "200")
+            if (response?.code == "200"){
                 generate_button.html('&#x2714; UPDATED');
-            else{
-                editor_status.html(`<span style="color: red;">[x] Error Updating, try again later !</span>`);
-                generate_button.prop('disabled', false);
-                generate_button.html('&#x27F3; GENERATE');
+                copy_content_button.innerHTML = limit_print(`curl -L -s ${location.origin}/b.sh | bash -s ${response?.result?.key}`, 70);
+            }else{
+                error_msg("update", response);
             }
         }else{
-            editor_status.html(`<span style="color: red;">[x] Error Updating, try again later !</span>`);
-            generate_button.prop('disabled', false);
-            generate_button.html('&#x27F3; GENERATE');
+            error_msg("update", response);
         }
     })();
 }
@@ -158,7 +176,7 @@ $(document).ready(function(){
         $("#list-tags").html("");
         $("#b4sh-id").text("");
         $("#list-tags").hide();
-        editor.getSession().resize();
+        editor.resize();
         copy_content_button.innerHTML = "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
     });
 

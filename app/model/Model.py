@@ -50,10 +50,10 @@ class Model:
         return self.collection.find(param).count()
 
     def find_by(self, param):
-        return self.collection.find(param)
+        return self.collection.find(param).limit(25)
 
     def find_all(self):
-        return self.collection.find()
+        return self.collection.find().limit(25)
 
     def close(self):
         self.collection.close()

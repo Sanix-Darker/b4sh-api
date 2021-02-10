@@ -53,8 +53,6 @@ def update_bash(bash_id: str, bash_object: dict, password) -> dict:
     if find.count() > 0:
         bash = list(find)[0]
 
-        print('bash["key"]: ', bash["key"])
-
         bash_object["bash_id"] = bash_id
         bash_object["key"] = bash["key"]
         bash_object["hash"] = bash["hash"]
@@ -73,7 +71,7 @@ def update_bash(bash_id: str, bash_object: dict, password) -> dict:
                 if bash_object["content"] == bash["content"]:
                     result = {
                         "code": "400",
-                        "result": "Update can not be done, the content is the same!"
+                        "reason": "Update can not be done, the content is the same!"
                     }
                 else:
                     bash_object = reformat_bash(bash, bash_object, True)
@@ -82,7 +80,9 @@ def update_bash(bash_id: str, bash_object: dict, password) -> dict:
                     }, bash_object)
                     result = {
                         "code": "200",
-                        "result": "Update on the bash done successfully !"
+                        "result": {
+                            "key": bash_object["key"]
+                        }
                     }
             else:
                 result = {
