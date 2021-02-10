@@ -9,9 +9,6 @@ var current_bash_id = "";
 
 var command_box = $("#command_box");
 
-// var host_api = "https://b4sh.co/api";
-var host_api = "http://127.0.0.1:4352/api";
-
 /**
  *
  * @param {*} key

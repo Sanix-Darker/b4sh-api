@@ -4,8 +4,6 @@
  * author : s@n1x-d4rk3r
  */
 
-var host_api = "http://127.0.0.1:4352/api";
-
 class ListElements extends HTMLElement {
 
     logMe(){

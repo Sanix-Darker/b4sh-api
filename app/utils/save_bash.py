@@ -55,14 +55,25 @@ def validate_before_save(input_bash: dict) -> dict:
 
     # Let's validate the input
     if check_status:
-        # Then save
-        Bash(input_bash).save()
-        input_bash = dell("_id", input_bash)
-        input_bash = dell("history", input_bash)
-        result = {
-            "code": "201",
-            "result": input_bash
-        }
+        # we search if an available hash already exist before saving it
+        result = list(Bash().collection.find({
+            "hash": {'$regex': input_bash["hash"]}
+        }, {"key": 1}))
+
+        if len(result) > 0:
+            result = {
+                "code": "400",
+                "reason": "A b4sh already exist with this same content ! {}".format(str(result[0]["key"]))
+            }
+        else:
+            # Then save
+            Bash(input_bash).save()
+            input_bash = dell("_id", input_bash)
+            input_bash = dell("history", input_bash)
+            result = {
+                "code": "201",
+                "result": input_bash
+            }
     else:
         result = {
             "code": "400",

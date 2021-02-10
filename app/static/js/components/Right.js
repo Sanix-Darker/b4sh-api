@@ -21,10 +21,10 @@ class Right extends HTMLElement {
         this.innerHTML = `
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#home">Edit</a>
+                    <a class="nav-link active" data-toggle="tab" href="#home">EDITOR</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#about">About</a>
+                    <a class="nav-link" data-toggle="tab" id="about-button" href="#about">HELP/ABOUT</a>
                 </li>
             </ul>
 
