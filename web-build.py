@@ -27,9 +27,9 @@ for c in utils:
 
 # We write a new content
 # and minify it
-with open(UTILS_PATH + "build.min.js", "w") as fii:
+with open(UTILS_PATH + "build.js", "w") as fii:
     fii.write(jsmin(final_js_content))
-
+# jsmin
 
 # The replacement code
 FROM_  = """
