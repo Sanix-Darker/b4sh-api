@@ -21,6 +21,7 @@ def _index():
 def _get_b_shell():
     return send_file("./static/b.sh", attachment_filename='b.sh')
 
+
 # /api/
 @app.route('/api', methods=['GET'])
 @cross_origin(supports_credentials=True)
@@ -176,6 +177,14 @@ def _find():
         }
 
     return result, result["code"]
+
+
+# /
+@app.route("/<key>")
+@cross_origin(supports_credentials=True)
+def _index2(key):
+
+    return render_template("index.html", content=get_content_by_key(key)["result"]["content"])
 
 
 if __name__ == "__main__":

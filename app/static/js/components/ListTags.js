@@ -28,8 +28,7 @@ class ListTags extends HTMLElement {
             if (elt.length > 1){
                 this.innerHTML += `
                 <span class="badge badge-default border" id="tag_${index}">
-                    ${elt}
-                    <b role="button" class="removeTag" target-id="${index}">&times;</b>
+                    ${elt}<!-- <b role="button" class="removeTag" target-id="${index}">&times;</b>-->
                 </span>
             `;
             }

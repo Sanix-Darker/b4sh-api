@@ -9,7 +9,9 @@
 #editor {
     height: 526px;
 }
-
+#default_content{
+    display: none;
+}
 #d-logo{
     font-size: 27px;
     display: inline-block;
@@ -33,6 +35,7 @@ kbd{
     height: -moz-fill-available;
     max-height: 400px;
     overflow: auto;
+    overflow-x: hidden;
 }
 
 html {

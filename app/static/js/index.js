@@ -196,7 +196,7 @@ function get_elt(title, hash){
         editor.session.setValue(editor.session.getValue() + `\n\n` + content);
     }else{
         tags = tags.filter(function(value, index){
-            return value > title;
+            return value !== title;
         });
         if (tags.length <= 0){
             $("#list-tags").hide();
@@ -219,6 +219,11 @@ $(document).ready(function(){
 
     // Initialisation of the editor
     initEditor();
+
+    // The default content if it's comming by key in the url
+    if(document.querySelector("#default_content").innerHTML.length > 11){
+        editor.getSession().setValue(document.querySelector("#default_content").innerHTML);
+    }
 
     // The clipBoard stuff
     copy_button.click(function() {
