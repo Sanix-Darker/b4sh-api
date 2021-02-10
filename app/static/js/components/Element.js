@@ -34,13 +34,14 @@ class Element extends HTMLElement {
         });
 
         this.innerHTML = `
-            <label class="form-check-label" style="background: 0;width: -webkit-fill-available;width: -moz-available;">
+            <label class="form-check-label style="background: 0;width: -webkit-fill-available;width: -moz-available;">
                 <li role='button' class="list-group-item d-flex justify-content-between align-items-center" style="padding-left: 30px;background: 0;">
-                    <input class="form-check-input" id="${this.getThis("id")}" type="checkbox">
+                    <div id="b_elt${this.getThis("hash")}" style="display:none;">${this.getThis("content")}</div>
+                    <input class="form-check-input b_elt" onchange="get_elt('${this.getThis("title")}', '${this.getThis("hash")}')" id="${this.getThis("hash")}" type="checkbox">
                     <span data-toggle="tooltip"
                         data-placement="top"
                         title="author: ${this.getThis("author")} | version: ${this.getThis("version")} | OS: ${this.getThis("os")}"
-                        class="mt-1" style="font-size: 15px;">${this.limit_print(this.getThis("title"), 15)}</span>
+                        class="mt-1" style="font-size: 15px;">${this.limit_print(this.getThis("title"), 17)}</span>
                     <span class="badge badge-secondary badge-pill">${this.getThis("used_count")}</span>
                 </li>
             </label>

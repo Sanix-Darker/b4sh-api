@@ -9,6 +9,9 @@ var current_bash_id = "";
 
 var command_box = $("#command_box");
 
+var tags = []
+
+
 /**
  *
  * @param {*} key
@@ -157,8 +160,6 @@ $("#new_b4sh").click(function() {
 
 $("#search_text").keyup(async function(){
 
-    console.log("target.value: ", this.value)
-
     const rawResponse = await fetch(`${host_api}/b/find?q=${this.value}`, {
         method: 'GET'
     });
@@ -185,6 +186,28 @@ $("#search_text").keyup(async function(){
     $("#count_all").html(nFormatter(response?.result.length));
 
 });
+
+function get_elt(title, hash){
+
+    var content = $("#b_elt"+hash).html();
+    if ($("#"+hash).prop("checked")){
+        $("#list-tags").show();
+        tags.push(title);
+        editor.session.setValue(editor.session.getValue() + `\n\n` + content);
+    }else{
+        tags = tags.filter(function(value, index){
+            return value > title;
+        });
+        if (tags.length <= 0){
+            $("#list-tags").hide();
+        }
+        editor.session.setValue(editor.session.getValue().replace(content, `\n`));
+    }
+
+    $("#list-tags").html(`<w-tags tags="${tags.join(",")}"></w-tags>`);
+
+    editor.scrollToLine(9999, true, true, function () {});
+}
 
 $(document).ready(function(){
     $("#list-tags").hide();

@@ -56,6 +56,7 @@ def update_bash(bash_id: str, bash_object: dict, password) -> dict:
         bash_object["bash_id"] = bash_id
         bash_object["key"] = bash["key"]
         bash_object["hash"] = bash["hash"]
+        bash_object["stats"] = bash["stats"]
 
         result = check_password(dell("_id", bash), password)
         # if every thing is okay, then we update
