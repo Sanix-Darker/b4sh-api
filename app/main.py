@@ -184,8 +184,11 @@ def _find():
 @cross_origin(supports_credentials=True)
 def _index2(key):
 
-    return render_template("index.html", content=get_content_by_key(key)["result"]["content"])
-
+    r = get_content_by_key(key)
+    if "result" in r:
+        return render_template("index.html", key=key, content=get_content_by_key(key)["result"]["content"])
+    else:
+        return render_template("index.html")
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True, port=4352)

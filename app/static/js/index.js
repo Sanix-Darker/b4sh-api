@@ -225,6 +225,11 @@ $(document).ready(function(){
         editor.getSession().setValue(document.querySelector("#default_content").innerHTML);
     }
 
+    // The default content if it's comming by key in the url
+    if(document.querySelector("#default_key").innerHTML.length > 11){
+        copy_content_button.innerHTML = limit_print(`curl -L -s ${location.origin}/b.sh | bash -s ${document.querySelector("#default_key").innerHTML}`, 70);
+    }
+
     // The clipBoard stuff
     copy_button.click(function() {
         copyToClipboard(copy_content_button.innerHTML, $(this));

@@ -9,7 +9,7 @@
 #editor {
     height: 526px;
 }
-#default_content{
+#default_content, #default_key{
     display: none;
 }
 #d-logo{
