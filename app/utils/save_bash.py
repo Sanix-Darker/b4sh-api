@@ -63,7 +63,7 @@ def validate_before_save(input_bash: dict) -> dict:
         if len(result) > 0:
             result = {
                 "code": "400",
-                "reason": "A b4sh already exist with this same content ! {}".format(str(result[0]["key"]))
+                "reason": "A b4sh already exist with this same content : {}".format(str(result[0]["key"]))
             }
         else:
             # Then save
