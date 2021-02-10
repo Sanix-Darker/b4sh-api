@@ -143,7 +143,7 @@ function initEditor(){
  * globalInit
  */
 function globalInit(){
-    $('[data-toggle="tooltip"]').tooltip();
+    // $('[data-toggle="tooltip"]').tooltip();
 
     // We set the host
     $("#co-input i").html(location.origin);
