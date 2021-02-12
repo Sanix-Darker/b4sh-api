@@ -312,24 +312,29 @@ function generate(){
     }
 }
 
+function clean_board(){
+  current_bash_id = "";
+  $("#list-tags").html("");
+  $("#b4sh-id").text("");
+  $("#list-tags").hide();
+  editor.resize();
+  copy_content_button.innerHTML = "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - "
+  tags = [];
+  // A basic keyup to uncheck all checked elements
+  var e = $.Event('keyup', {
+    keycode: 27
+  });
+  $('#search_text').trigger(e);
+}
+
 $("#new_b4sh").click(function() {
     editor.session.setValue(`#!/bin/bash\n\n# _title_: my-title-here\n\n`);
-    current_bash_id = "";
-    $("#list-tags").html("");
-    $("#b4sh-id").text("");
-    $("#list-tags").hide();
-    editor.resize();
-    copy_content_button.innerHTML = "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+    clean_board();
 });
 
 $("#clean_editor").click(function() {
     editor.session.setValue(``);
-    current_bash_id = "";
-    $("#list-tags").html("");
-    $("#b4sh-id").text("");
-    $("#list-tags").hide();
-    editor.resize();
-    copy_content_button.innerHTML = "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+    clean_board();
 });
 
 $("#search_text").keyup(async function(){
@@ -357,9 +362,7 @@ $("#search_text").keyup(async function(){
             document.querySelector("#listt").innerHTML += "</div>";
         }
     }
-
     $("#count_all").html(nFormatter(response?.result.length));
-
 });
 
 function get_elt(title, hash){

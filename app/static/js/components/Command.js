@@ -22,7 +22,7 @@ class Command extends HTMLElement {
 
         this.innerHTML = `
             <kbd class="shadow-sm">
-                <small id="co-input">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</small>
+                <small id="co-input">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </small>
                 <input type="text" style="display: none;" id="co-hidden"/>
                 <i
                     id="co"
