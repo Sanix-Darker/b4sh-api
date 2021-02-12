@@ -153,7 +153,7 @@ $("#new_b4sh").click(function() {
     $("#b4sh-id").text("");
     $("#list-tags").hide();
     editor.resize();
-    copy_content_button.innerHTML = "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+    copy_content_button.innerHTML = "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
 });
 
 $("#search_text").keyup(async function(){
