@@ -113,6 +113,11 @@ get_param()
 {
     result=$(curl -L -s "${HOST}/api/b/r/${1}")
 
+    if [[ "$result" == *"<title>404 Not Found</title>"* ]]; then
+        echo "[x] This b4sh doesn't exist, please check again the key !!!"
+        exit_b4sh
+    fi
+
     content=$(echo $result | jq -r '.result.content')
     title=$(echo $result | jq -r '.result.title')
     description=$(echo $result | jq -r '.result.description')

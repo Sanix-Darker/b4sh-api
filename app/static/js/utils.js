@@ -173,7 +173,7 @@ function nFormatter(num, digits=1) {
 
 function refresh_count(){
   (async () => {
-    const rawResponse = await fetch(`${host_api}/b/count`, {
+    const rawResponse = await fetch(`/api/b/count`, {
         method: 'GET'
     });
     const response = await rawResponse.json();

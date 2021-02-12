@@ -51,7 +51,7 @@ function error_msg(state, response){
 
 function create_bash(title, version,description, os, author, content){
     (async () => {
-        const rawResponse = await fetch(host_api + "/b", {
+        const rawResponse = await fetch( "/api/b", {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -79,13 +79,12 @@ function create_bash(title, version,description, os, author, content){
         }else{
             error_msg("create", response);
         }
-
     })();
 }
 
 function update_bash(title, version,description, os, author, content, current_bash_id){
     (async () => {
-        const rawResponse = await fetch(`${host_api}/b/${current_bash_id}`, {
+        const rawResponse = await fetch(`/api/b/${current_bash_id}`, {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
@@ -159,7 +158,7 @@ $("#new_b4sh").click(function() {
 
 $("#search_text").keyup(async function(){
 
-    const rawResponse = await fetch(`${host_api}/b/find?q=${this.value}`, {
+    const rawResponse = await fetch(`/api/b/find?q=${this.value}`, {
         method: 'GET'
     });
     const response = await rawResponse.json();
