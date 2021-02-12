@@ -40,20 +40,19 @@ class Right extends HTMLElement {
                                 <!-- Web component for the Editor (&#13; is for a new line)-->
                                 <w-editor content=""></w-editor>
                                 <!-- Web component for the Editor (&#13; is for a new line)-->
-
-                                <div class="row pt-3">
-                                    <div class="col-9 pt-1">
-                                        <!-- The web component for the compressed command -->
-                                        <w-command id="command_box" key="hello_world_234dde"></w-command>
-                                        <!-- The web component for the compressed command -->
-                                    </div>
-                                    <div class="col">
-                                        <button class="btn btn-primary float-right" id="gen" disabled onclick="generate()">
-                                        &#x27F3; GENERATE
-                                        </button>
-                                    </div>
-                                </div>
                                 <hr>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-9">
+                                <!-- The web component for the compressed command -->
+                                <w-command id="command_box" key="hello_world_234dde"></w-command>
+                                <!-- The web component for the compressed command -->
+                            </div>
+                            <div class="col">
+                                <button class="btn btn-primary float-right" id="gen" disabled onclick="generate()">
+                                &#x27F3; GENERATE
+                                </button>
                             </div>
                         </div>
                     </div>
