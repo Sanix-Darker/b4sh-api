@@ -9,7 +9,7 @@
 
 # Global variables
 VERSION=0.0.1
-HOST="http://127.0.0.1:4352"
+HOST="https://b4sh.co"
 
 
 # Just a custom exit method
@@ -112,6 +112,11 @@ check_local_execute()
 get_param()
 {
     result=$(curl -L -s "${HOST}/api/b/r/${1}")
+
+    if [[ "$result" == *"<title>404 Not Found</title>"* ]]; then
+        echo "[x] This b4sh doesn't exist, please check again the key !!!"
+        exit_b4sh
+    fi
 
     content=$(echo $result | jq -r '.result.content')
     title=$(echo $result | jq -r '.result.title')
