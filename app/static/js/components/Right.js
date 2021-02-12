@@ -25,7 +25,8 @@ class Right extends HTMLElement {
                         <b id="b4sh-id"></b>
                     </div>
                     <div style="text-align: right;" class="col">
-                        <span class="btn btn-secondary" role="button" style="display: inline!important;" id="new_b4sh">New b4sh</span>
+                        <span class="btn" role="button" style="background: white;display: inline!important;" id="clean_editor">CLEAN</span>
+                        <span class="btn btn-secondary" role="button" style="display: inline!important;" id="new_b4sh">NEW B4SH</span>
                     </div>
 
                     <div id="editor_wrapper" class="app_editor_wrapper">

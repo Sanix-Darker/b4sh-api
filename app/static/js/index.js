@@ -156,6 +156,16 @@ $("#new_b4sh").click(function() {
     copy_content_button.innerHTML = "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
 });
 
+$("#clean_editor").click(function() {
+    editor.session.setValue(``);
+    current_bash_id = "";
+    $("#list-tags").html("");
+    $("#b4sh-id").text("");
+    $("#list-tags").hide();
+    editor.resize();
+    copy_content_button.innerHTML = "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+});
+
 $("#search_text").keyup(async function(){
 
     const rawResponse = await fetch(`/api/b/find?q=${this.value}`, {
