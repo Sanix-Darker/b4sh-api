@@ -10,7 +10,7 @@ class ListElements extends HTMLElement {
         super();
 
         (async () => {
-            const rawResponse = await fetch(`${host_api}/b`, {
+            const rawResponse = await fetch(`/api/b`, {
                 method: 'GET'
             });
 

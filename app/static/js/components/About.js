@@ -54,8 +54,7 @@ class About extends HTMLElement {
                         </a>.
                     </li>
                 </ul>
-            <hr>
-        `;
+            <hr>`;
     }
 }
 window.customElements.define('w-about', About);
