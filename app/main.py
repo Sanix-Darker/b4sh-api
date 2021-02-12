@@ -91,19 +91,19 @@ def _get_update_delete(bash_id):
 
 
 # /api/bash/raw/key
-# @app.route('/api/b/r/<key>', methods=['GET'])
-# @cross_origin(supports_credentials=True)
-# def _run(key):
-#     try:
-#         result = get_content_by_key(key)
-#     except Exception as es:
-#         get_trace()
-#         result = {
-#             "code": "500",
-#             "reason": "An error occur, please check logs!"
-#         }
+@app.route('/api/b/r/<key>', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def _run(key):
+    try:
+        result = get_content_by_key(key)
+    except Exception as es:
+        get_trace()
+        result = {
+            "code": "500",
+            "reason": "An error occur, please check logs!"
+        }
 
-#     return result, result["code"]
+    return result, result["code"]
 
 
 # # /api/bash/up-vote/key
