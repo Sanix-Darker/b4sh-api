@@ -352,7 +352,7 @@ $("#search_text").keyup(async function(){
                     author = "${el?.author}"
                     used_count = "${el.stats.used_count}" version = "${el?.version}"
                     os = "${el?.os}"></w-el>
-                    <code id="b_elt${el.hash}" style="display:none;">${el.content}</code>`
+                    <code id="b_elt${el.hash}">${el.content}</code>`
             });
             document.querySelector("#listt").innerHTML += "</div>";
         }

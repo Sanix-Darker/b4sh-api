@@ -38,11 +38,14 @@ kbd{
     overflow-x: hidden;
 }
 
+code{
+    display: none;
+}
+
 html {
     --bg: #FCFCFC;
     --cl: #000000;
 }
-
 
 
 body {
