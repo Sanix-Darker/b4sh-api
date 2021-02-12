@@ -170,13 +170,13 @@ $("#search_text").keyup(async function(){
                 document.querySelector("#listt").innerHTML += `
                 <w-el
                     id = "b_${el.hash}" title = "${el.key}"
-                    content = "${el.content}"
                     hash = "${el.hash}"
                     date = "${el.date}"
                     checked = "${tags.indexOf(el.key) !== -1 ? "on": "off"}"
                     author = "${el?.author}"
                     used_count = "${el.stats.used_count}" version = "${el?.version}"
-                    os = "${el?.os}"></w-el>`
+                    os = "${el?.os}"></w-el>
+                    <code id="b_elt${el.hash}" style="display:none;">${el.content}</code>`
             });
             document.querySelector("#listt").innerHTML += "</div>";
         }
