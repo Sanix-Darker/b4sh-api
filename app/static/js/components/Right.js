@@ -31,7 +31,7 @@ class Right extends HTMLElement {
 
                     <div id="editor_wrapper" class="app_editor_wrapper">
                         <div class="row">
-                            <div class="col-2 border p-0" id="list-tags">
+                            <div class="col-2 p-0" id="list-tags">
                                 <!-- A web component for listing tags -->
                                 <w-tags tags=""></w-tags>
                                 <!-- A web component for listing tags -->
@@ -44,13 +44,13 @@ class Right extends HTMLElement {
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-9">
+                            <div class="col-10">
                                 <!-- The web component for the compressed command -->
                                 <w-command id="command_box" key="hello_world_234dde"></w-command>
                                 <!-- The web component for the compressed command -->
                             </div>
                             <div class="col">
-                                <button class="btn btn-primary float-right" id="gen" disabled onclick="generate()">
+                                <button class="btn btn-primary float-right" id="gen" style="font-size: .8rem" disabled onclick="generate()">
                                 &#x27F3; GENERATE
                                 </button>
                             </div>
