@@ -24,18 +24,16 @@ class ListElements extends HTMLElement {
                         return b.stats.used_count - a.stats.used_count}
                         ).forEach((el) => {
                         // let's remove basic tests at the beginning of the listing of elements
-                        if (el.key.indexOf("test") === -1 && el.key.indexOf("hello-world") === -1 && el.key.indexOf("my-title-here") !== -1){
-                            this.innerHTML += `
-                            <w-el
-                                id = "b_${el.hash}" title = "${el.key}"
-                                hash = "${el.hash}"
-                                date = "${el.date}"
-                                author = "${el?.author}"
-                                used_count = "${el.stats.used_count}" version = "${el?.version}"
-                                os = "${el?.os}"></w-el>
-                            <code
-                            id="b_elt${el.hash}">${el.content}\n# ${location.protocol + "//" + location.host}/${el.key}\n# curl -L -s ${location.protocol + "//" + location.host}/b.sh | bash -s ${el.key}</code>`
-                        }
+                        this.innerHTML += `
+                        <w-el
+                            id = "b_${el.hash}" title = "${el.key}"
+                            hash = "${el.hash}"
+                            date = "${el.date}"
+                            author = "${el?.author}"
+                            used_count = "${el.stats.used_count}" version = "${el?.version}"
+                            os = "${el?.os}"></w-el>
+                        <code
+                        id="b_elt${el.hash}">${el.content}\n# ${location.protocol + "//" + location.host}/${el.key}\n# curl -L -s ${location.protocol + "//" + location.host}/b.sh | bash -s ${el.key}</code>`
                     });
                     this.innerHTML += "</div>";
                 }
