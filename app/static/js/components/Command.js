@@ -21,8 +21,8 @@ class Command extends HTMLElement {
         super();
 
         this.innerHTML = `
-            <kbd class="shadow-sm">
-                <small id="co-input">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </small>
+            <kbd class="shadow-sm" style="padding: .4rem!important;">
+                <small id="co-input">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </small>
                 <input type="text" style="display: none;" id="co-hidden"/>
                 <i
                     id="co"
@@ -31,7 +31,7 @@ class Command extends HTMLElement {
                     title="Click to copy"
                     role="button"
                     style="background: white;color: black;"
-                    class="shadow-sm p-1 mt-n1 fas fa-copy float-right mr-n3">Copy</i>
+                    class="shadow-sm p-1 mt-n1 fas fa-copy float-right mr-n1">Copy</i>
             </kbd>
         `;
     }
