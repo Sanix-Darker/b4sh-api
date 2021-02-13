@@ -357,7 +357,8 @@ $("#search_text").keyup(async function(){
                     author = "${el?.author}"
                     used_count = "${el.stats.used_count}" version = "${el?.version}"
                     os = "${el?.os}"></w-el>
-                    <code id="b_elt${el.hash}">${el.content}\n\n# curl -L -s ${location.protocol + "//" + location.host}/b.sh | bash -s ${el.key}</code>`
+                    <code
+                    id="b_elt${el.hash}">${el.content}\n# ${location.protocol + "//" + location.host}/${el.key}\n# curl -L -s ${location.protocol + "//" + location.host}/b.sh | bash -s ${el.key}</code>`
             });
             document.querySelector("#listt").innerHTML += "</div>";
         }
