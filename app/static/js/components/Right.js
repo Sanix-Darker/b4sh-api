@@ -44,7 +44,7 @@ class Right extends HTMLElement {
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-9 pt-1">
+                            <div class="col-9">
                                 <!-- The web component for the compressed command -->
                                 <w-command id="command_box" key="hello_world_234dde"></w-command>
                                 <!-- The web component for the compressed command -->

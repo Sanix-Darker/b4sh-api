@@ -15,15 +15,8 @@ $(document).ready(function(){
         alert("You're probably on a mobile device, b4sh is not yet available for this screen-size, it could be very very UGLY !.");
     }
 
-    // The default content if it's comming by key in the url
-    if(document.querySelector("#default_content").innerHTML.length > 11){
-        editor.getSession().setValue(document.querySelector("#default_content").innerHTML);
-    }
-
-    // The default content if it's comming by key in the url
-    if(document.querySelector("#default_key").innerHTML.length > 11){
-        copy_content_button.innerHTML = limit_print(`curl -L -s ${location.origin}/b.sh | bash -s ${document.querySelector("#default_key").innerHTML}`, 70);
-    }
+    // From the given key in the link, get content
+    get_raw_from_link();
 
     // The clipBoard stuff
     copy_button.click(function() {

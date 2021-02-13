@@ -99,6 +99,7 @@ function copyToClipboard(text, el) {
     }
 }
 
+// Changing the logo fro the dark-mode
 function d_logo(night){
   $("#d-logo").html(night ? "🌜" : "☀");
 }
@@ -239,6 +240,8 @@ function create_bash(title, version,description, os, author, content){
                 $("#b4sh-id").text(current_bash_id);
                 // we set the keyof the commnd-box
                 copy_content_button.innerHTML = limit_print(`curl -L -s ${location.origin}/b.sh | bash -s ${response?.result?.key}`, 67);
+
+                $("#linkk").html(`<a href="${location.origin + "/" + response?.result?.key}" target="_blank">${location.origin + "/" + response?.result?.key}</a>`);
             }else{
                 error_msg("create", response);
             }
@@ -317,6 +320,7 @@ function clean_board(){
   $("#list-tags").html("");
   $("#b4sh-id").text("");
   $("#list-tags").hide();
+  $("#linkk").html("");
   editor.resize();
   copy_content_button.innerHTML = "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - "
   tags = [];
@@ -386,4 +390,16 @@ function get_elt(title, hash){
     $("#list-tags").html(`<w-tags tags="${tags.join(",")}"></w-tags>`);
 
     editor.scrollToLine(9999, true, true, function () {});
+}
+
+function get_raw_from_link(){
+  // The default content if it's comming by key in the url
+  if(document.querySelector("#default_content").innerHTML.length > 11){
+      editor.getSession().setValue(document.querySelector("#default_content").innerHTML);
+  }
+
+  // The default content if it's comming by key in the url
+  if(document.querySelector("#default_key").innerHTML.length > 11){
+      copy_content_button.innerHTML = limit_print(`curl -L -s ${location.origin}/b.sh | bash -s ${document.querySelector("#default_key").innerHTML}`, 70);
+  }
 }
