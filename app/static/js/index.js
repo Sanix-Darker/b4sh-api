@@ -9,6 +9,12 @@ $(document).ready(function(){
     // Initialisation of the editor
     initEditor();
 
+    // Mobile device alert
+    if(window.matchMedia("(max-width: 767px)").matches){
+        // The viewport is less than 768 pixels wide
+        alert("You're probably on a mobile device, b4sh is not yet available for this screen-size, it could be very very UGLY !.");
+    }
+
     // The default content if it's comming by key in the url
     if(document.querySelector("#default_content").innerHTML.length > 11){
         editor.getSession().setValue(document.querySelector("#default_content").innerHTML);
