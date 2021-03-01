@@ -202,7 +202,7 @@ function get_value_from_row(row){
 }
 
 function limit_print(str, limit){
-    return (str.length > limit) ? str.substring(0,limit) + "..." : str;
+    return (str.length > (limit + 7)) ? str.substring(0,limit) + "..." : str;
 }
 
 function error_msg(state, response){

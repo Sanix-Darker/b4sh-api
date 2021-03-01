@@ -21,7 +21,6 @@ class Command extends HTMLElement {
         super();
 
         this.innerHTML = `
-            <small id="linkk"></small>
             <kbd class="shadow-sm" style="padding: .4rem!important;">
                 <small id="co-input">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </small>
                 <input type="text" style="display: none;" id="co-hidden"/>

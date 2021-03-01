@@ -22,7 +22,7 @@ class Right extends HTMLElement {
             <div class="tab-content">
                 <div class="tab-pane container active p-0 pl-3 pt-2" id="home">
                     <div style="text-align: left;" class="col">
-                        <b id="b4sh-id"></b>
+                        <small id="linkk"></small>  <small id="b4sh-id"></small>
                     </div>
                     <div style="text-align: right;" class="col">
                         <span class="btn" role="button" style="background: white;display: inline!important;" id="clean_editor">CLEAN</span>
@@ -44,7 +44,7 @@ class Right extends HTMLElement {
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-9">
+                            <div class="col-9 pt-1">
                                 <!-- The web component for the compressed command -->
                                 <w-command id="command_box" key="hello_world_234dde"></w-command>
                                 <!-- The web component for the compressed command -->
