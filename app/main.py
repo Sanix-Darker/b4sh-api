@@ -19,7 +19,7 @@ def _index():
 @app.route("/b.sh")
 @cross_origin(supports_credentials=True)
 def _get_b_shell():
-    return send_file("./static/b.sh", attachment_filename='b.sh')
+    return send_file("./static/b.sh", download_name='b.sh')
 
 
 # /api/
